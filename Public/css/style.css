@@ -1,0 +1,38 @@
+.logo {
+	height: 50px;
+	width: auto;
+}
+.carousel-item>img{
+	height: 30rem;
+	width: all;
+	object-fit: cover;
+}
+.list-movie>img{
+	height: 12rem;
+	width: 100%;
+	object-fit: cover;
+}
+h6{
+	margin-top: 0.5rem;
+	text-transform: uppercase;
+	color: #5b5d60;
+}
+.carousel-indicators .active{
+	background-color: green;
+}
+
+#success-icon {
+	width: 200px;
+	height: 200px;
+	margin-top: 8rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+
+}
+.movie-item>img{
+    height: 160px;
+    width: 120px;
+    object-fit: cover;
+}
