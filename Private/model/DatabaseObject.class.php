@@ -13,6 +13,8 @@ class DatabaseObject
     static protected $columns=[];
 
     protected $id;
+
+
     // return list attributes as array (key=>value)
     public function attributes(){
         $attributes = [];
@@ -53,8 +55,41 @@ class DatabaseObject
     }
      function update(){
 
+         $attributes = $this->sanitized_attributes();
+         $attribute_pairs = [];
+         foreach($attributes as $key => $value) {
+             $attribute_pairs[] = "{$key}='{$value}'";
+         }
+
+         $sql = "UPDATE " . static::$table_name . " SET ";
+         $sql .= join(', ', $attribute_pairs);
+         $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
+         $sql .= "LIMIT 1";
+         $result = self::$database->query($sql);
+         return $result;
     }
-     function delete(){
+    public function save() {
+        // A new record will not have an ID yet
+        if(isset($this->id)) {
+            return $this->update();
+        } else {
+            return $this->create();
+        }
+    }
+
+    public function merge_attributes($args=[]) {
+        foreach($args as $key => $value) {
+            if(property_exists($this, $key) && !is_null($value)) {
+                $this->$key = $value;
+            }
+        }
+    }
+    public function delete() {
+        $sql = "DELETE FROM " . static::$table_name . " ";
+        $sql .= "WHERE id='" . self::$database->escape_string($this->id) . "' ";
+        $sql .= "LIMIT 1";
+        $result = self::$database->query($sql);
+        return $result;
 
     }
 

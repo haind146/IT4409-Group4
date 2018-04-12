@@ -36,3 +36,14 @@ h6{
     width: 120px;
     object-fit: cover;
 }
+
+.poster-detail>img{
+	height: 21em;
+	width: 13em;
+	object-fit: cover;
+}
+.side-banner>img{
+    height: 13em;
+    width: 18em;
+    object-fit: cover;
+}
