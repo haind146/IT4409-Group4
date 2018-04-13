@@ -60,6 +60,13 @@ if(is_post_request()){
                 <select class="form-control col-sm-7" name="movie[genre]">
                     <option value="Kinh dị">Kinh dị</option>
                     <option value="Khoa học viễn tưởng">Khoa học viễn tưởng</option>
+                    <option value="Hành động">Hành động</option>
+                    <option value="Hài">Hài</option>
+                    <option value="Tình cảm">Tình cảm</option>
+                    <option value="Hoạt hình">Hoạt hình</option>
+                    <option value="Thần thoại">Thần thoại</option>
+                    <option value="Tâm lý">Tâm lý</option>
+
                 </select>
 
             </div>

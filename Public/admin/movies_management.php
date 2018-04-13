@@ -8,6 +8,9 @@
 $page_title = 'Quản lý phim';
 require_once('../../Private/initialize.php');
 include_once(SHARED_PATH . '/admin_header.php');
+
+$nowShowingMovies = Movie::getNowshowingMovie();
+
 ?>
 
 <main>
@@ -19,13 +22,13 @@ include_once(SHARED_PATH . '/admin_header.php');
                 <option>Phim sắp chiếu</option>
                 <option>Tất cả phim</option>
             </select>
-            <a class="btn btn-success offset-4" href="">Thêm phim mới</a>
+            <a class="btn btn-success offset-3" href="<?php echo url_for("admin/AddFilmView.php")?>">Thêm phim mới</a>
         </div>
 
 
         <div id="list-movie" style="margin-top: 1em">
             <div class="row">
-                <div class="movie-item col-md-2">
+                <div class="movie-item col-md-2 offset-1">
                     <img src="../img/movie1.jpg">
                 </div>
                 <div class="col-md-6">
@@ -33,8 +36,10 @@ include_once(SHARED_PATH . '/admin_header.php');
                     <b>Trạng thái: </b>
                     <br> <b>Số lượt chiếu: </b>
                 </div>
-                <div class="col-md-2 offset-2">
-                    <a class=" btn btn-outline-info justify-content-end">Xem chi tiết</a>
+                <div class="col-md-2 ">
+                    <br><br>
+                    <div><a class=" btn btn-outline-info justify-content-end">Chi tiết</a></div>
+
 
                 </div>
 
