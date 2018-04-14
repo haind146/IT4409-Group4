@@ -23,7 +23,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <img class="logo" src="../../Public/img/logo.png">
+            <a href="home.php"> <img class="logo" src="../../Public/img/logo.png"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,7 @@
     <div class="container">
         <nav class="nav justify-content-lg-center">
             <a class="nav-link active" href="#">Lịch chiếu</a>
-            <a class="nav-link" href="#">Quản lý phim</a>
+            <a class="nav-link" href="movies_management.php">Quản lý phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
             <a class="nav-link" href="#">Quản lý thành viên</a>
         </nav>

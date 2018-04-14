@@ -13,7 +13,9 @@
 
     $page_title = 'HOME';
     include_once ('../../private/share/admin_header.php');
-//    require_admin_login();
+    require_admin_login();
+    $nowShowingMovie = Movie::getNowshowingMovie();
+
 
 ?>
 
@@ -22,19 +24,20 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <?php $i = 1 ; for ($i;$i<count($nowShowingMovie);$i++) { ?>
+
+            <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i ?>"></li>
+            <?php } ?>
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100 " src="img/movie1.jpg" alt="First slide">
+                <img class="d-block w-100 " src="../img/movie1.jpg ?>" alt="First slide">
             </div>
+            <?php foreach ($nowShowingMovie as $movie ) { ?>
             <div class="carousel-item">
-                <img class="d-block w-100" src="img/movie2.jpg" alt="Second slide">
+                <img class="d-block w-100 " src="../img/<?php echo $movie->banner_url ?>" alt="First slide">
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="img/movie3.jpg" alt="Third slide">
-            </div>
+            <?php } ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -57,29 +60,15 @@
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="container">
                     <div class="row ">
-                        <div class="col">
-                            <a href="#" class="list-movie"><img src="img/movie1.jpg"></a>
-                            <h6 >Tên phim</h6>
+                        <?php $i=0; foreach ($nowShowingMovie as $movie ) { ?>
+                        <div class="col-md-4">
+                            <a href="movie_detail.php?movie_id=<?php echo $movie->id ?>" class="list-movie"><img src="../img/<?php echo $movie->banner_url ?>"></a>
+                            <h6 style="text-transform: uppercase" ><?php echo $movie->name ?></h6>
                         </div>
-                        <div class="col list-movie">
-                            <img src="img/movie2.jpg">
-                        </div>
-                        <div class="col list-movie">
-                            <img src="img/movie3.jpg">
-                        </div>
+
+                        <?php if(++$i > 5) break;} ?>
                     </div>
-                    <div class="row ">
-                        <div class="col">
-                            <a href="#" class="list-movie"><img src="img/movie4.jpg"></a>
-                            <h6 >Tên phim</h6>
-                        </div>
-                        <div class="col list-movie">
-                            <img src="img/movie5.jpg">
-                        </div>
-                        <div class="col list-movie">
-                            <img src="img/movie6.jpg">
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

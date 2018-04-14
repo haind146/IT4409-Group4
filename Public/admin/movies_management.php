@@ -39,7 +39,7 @@ $nowShowingMovies = Movie::getNowshowingMovie();
                 </div>
                 <div class="col-md-2 ">
                     <br><br>
-                    <div><a class=" btn btn-outline-info justify-content-end" href="">Chi tiết</a></div>
+                    <div><a class=" btn btn-outline-info justify-content-end" href="movie_detail.php?movie_id=<?php echo $movie->id ?>">Chi tiết</a></div>
 
                 </div>
             </div>

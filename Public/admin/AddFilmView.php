@@ -35,6 +35,8 @@ if(is_post_request()){
 
         $new_movie = new Movie($movie_arr);
         $new_movie->save();
+
+        redirect_to(url_for("admin/movie_management.php"));
     }
 }
 ?>

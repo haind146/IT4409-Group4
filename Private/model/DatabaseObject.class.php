@@ -61,7 +61,7 @@ class DatabaseObject
              $attribute_pairs[] = "{$key}='{$value}'";
          }
 
-         $sql = "UPDATE " . static::$table_name . " SET ";
+         $sql = "UPDATE " . static::$tableName . " SET ";
          $sql .= join(', ', $attribute_pairs);
          $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
          $sql .= "LIMIT 1";
