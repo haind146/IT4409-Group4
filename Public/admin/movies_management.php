@@ -27,23 +27,25 @@ $nowShowingMovies = Movie::getNowshowingMovie();
 
 
         <div id="list-movie" style="margin-top: 1em">
-            <div class="row">
+            <?php foreach ($nowShowingMovies as $movie) { ?>
+            <div class="row" style="margin-top: 1em;">
                 <div class="movie-item col-md-2 offset-1">
-                    <img src="../img/movie1.jpg">
+                    <img src="../img/<?php echo $movie->poster_url ?>">
                 </div>
                 <div class="col-md-6">
-                    <h4 style="text-transform: uppercase">tên phim</h4>
-                    <b>Trạng thái: </b>
+                    <h4 style="text-transform: uppercase"> <?php echo $movie->name ?> </h4>
+                    <b>Trạng thái:  </b> <?php echo $movie->status ?>
                     <br> <b>Số lượt chiếu: </b>
                 </div>
                 <div class="col-md-2 ">
                     <br><br>
-                    <div><a class=" btn btn-outline-info justify-content-end">Chi tiết</a></div>
-
+                    <div><a class=" btn btn-outline-info justify-content-end" href="">Chi tiết</a></div>
 
                 </div>
-
             </div>
+            <?php } ?>
+
+
         </div>
 
     </div>
