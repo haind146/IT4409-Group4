@@ -119,6 +119,17 @@ class DatabaseObject
         return array_shift($row);
     }
 
+    static public function find_by_id($id) {
+        $sql = "SELECT * FROM " . static::$tableName . " ";
+        $sql .= "WHERE id='" . self::$database->escape_string($id) . "'";
+        $obj_array = static::find_by_sql($sql);
+        if(!empty($obj_array)) {
+            return array_shift($obj_array);
+        } else {
+            return false;
+        }
+    }
+
     static protected function instantiate($record) {
         $object = new static;
         // Could manually assign values to properties
