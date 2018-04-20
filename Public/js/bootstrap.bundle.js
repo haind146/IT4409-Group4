@@ -2162,7 +2162,7 @@ function getPopperOffsets(popper, referenceOffsets, placement) {
  * @argument {Array} arr
  * @argument prop
  * @argument value
- * @returns index or -1
+ * @returns cellIndex or -1
  */
 function find(arr, check) {
   // use native find if supported
@@ -2175,13 +2175,13 @@ function find(arr, check) {
 }
 
 /**
- * Return the index of the matching object
+ * Return the cellIndex of the matching object
  * @method
  * @memberof Popper.Utils
  * @argument {Array} arr
  * @argument prop
  * @argument value
- * @returns index or -1
+ * @returns cellIndex or -1
  */
 function findIndex(arr, prop, value) {
   // use native findIndex if supported
@@ -3004,7 +3004,7 @@ function toValue(str, measurement, popperOffsets, referenceOffsets) {
 function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   var offsets = [0, 0];
 
-  // Use height if placement is left or right and index is 0 otherwise use width
+  // Use height if placement is left or right and cellIndex is 0 otherwise use width
   // in this way the first offset will use an axis and the second one
   // will use the other one
   var useHeight = ['right', 'left'].indexOf(basePlacement) !== -1;
@@ -6288,7 +6288,7 @@ var Tab = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): index.js
+ * Bootstrap (v4.0.0-alpha.6): cellIndex.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

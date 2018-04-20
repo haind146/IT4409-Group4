@@ -6,7 +6,7 @@
  * Time: 9:17 PM
  */
 require_once ('../../Private/initialize.php');
-include_once (SHARED_PATH . '/admin_header.php');
+
 
 
     if(isset($_GET['movie_id'])){
@@ -16,8 +16,9 @@ include_once (SHARED_PATH . '/admin_header.php');
     } else {
         redirect_to(url_for('admin/movies_management.php'));
     }
+    $page_title = $movie->name;
 
-
+include_once (SHARED_PATH . '/admin_header.php');
 ?>
 
     <main>

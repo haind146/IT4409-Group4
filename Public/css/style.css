@@ -2,6 +2,9 @@
 	height: 50px;
 	width: auto;
 }
+.carousel {
+	margin-top: -1em;
+}
 .carousel-item>img{
 	height: 30rem;
 	width: all;
@@ -46,4 +49,27 @@ h6{
     height: 13em;
     width: 18em;
     object-fit: cover;
+}
+main{
+	background-color: #efebdb;
+	padding-top: 1em;
+	min-height: 50em;
+}
+
+.banner-popover>img{
+	height: 8em;
+	width: 12em;
+	object-fit: cover;
+}
+.banner-popover{
+	margin-left: 1em;
+}
+
+.choose-movie{
+	background-color: #ffffff;
+	padding: 1em 6em 1em 6em;
+
+}
+table {
+	text-align: center;
 }

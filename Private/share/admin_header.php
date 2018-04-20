@@ -15,8 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../Public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../Public/css/style.css">
+    <link rel="stylesheet" href="<?php echo url_for('/css/bootstrap.min.css') ?>" />
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo url_for('/css/style.css') ?>" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title><?php echo $page_title ?> </title>
 </head>
 <body>
@@ -54,7 +56,7 @@
     </nav>
     <div class="container">
         <nav class="nav justify-content-lg-center">
-            <a class="nav-link active" href="#">Lịch chiếu</a>
+            <a class="nav-link active" href="schedule.php">Lịch chiếu</a>
             <a class="nav-link" href="movies_management.php">Quản lý phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
             <a class="nav-link" href="#">Quản lý thành viên</a>

@@ -17,7 +17,7 @@ if(is_post_request()) {
         header(PUBLIC_PATH . "/admin/home.php");
     }
     else {
-        header(PUBLIC_PATH . "/index.php");
+        header(PUBLIC_PATH . "/cellIndex.php");
     }
 }
 

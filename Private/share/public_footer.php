@@ -11,8 +11,8 @@
 </footer>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>`
-<script src="js/bootstrap.bundle.js"></script>
-<script src="js/action.js"></script>
+<script src="<?php echo url_for('js/jquery-3.3.1.slim.min.js') ?>"></script>`
+<script src="<?php echo url_for('js/bootstrap.bundle.js') ?>"></script>
+<script src="<?php echo url_for('js/action.js') ?>"></script>
 </body>
 </html>

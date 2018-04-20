@@ -18,7 +18,7 @@
 
         }
         else {
-            redirect_to(url_for('/index.php'));
+            redirect_to(url_for('/cellIndex.php'));
         }
     }
 ?>
