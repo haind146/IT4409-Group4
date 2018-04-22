@@ -19,6 +19,13 @@ class Schedule extends DatabaseObject
     static public function find_schedule_by_movie($movie_id){
         $sql = "SELECT * FROM schedule WHERE movie_id = '" . $movie_id . "' ";
         $sql.= "AND start_time> now() ";
+        return static::find_by_sql($sql);
     }
+
+    static public function find_schedule_by_date($date){
+        $sql = "SELECT * FROM schedule WHERE start_time BETWEEN '";
+        $sql .= $date ."' AND '" . $date . " 23:59:59';";
+        return static::find_by_sql($sql);
+}
 
 }

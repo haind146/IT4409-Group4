@@ -6,10 +6,19 @@
  * Time: 8:04 PM
  */
 require_once ('../../Private/initialize.php');
+if(isset($_GET['date'])){
+    header("Content-Type: application/json; charset=UTF-8");
+    $date = $_GET['date'];
+    $schedules = Schedule::find_schedule_by_date($date);
+    die(json_encode($schedules));
+}
+
 $page_title = 'Lập lịch chiếu';
 include_once (SHARED_PATH . '/admin_header.php');
 
 $nowShowingMovie = Movie::getNowshowingMovie();
+
+
 ?>
 
 <main>
@@ -17,7 +26,7 @@ $nowShowingMovie = Movie::getNowshowingMovie();
         <h2 class="text-center" style="text-transform: uppercase;">Lập lịch chiếu phim</h2>
         <div class="form-group form-inline justify-content-center">
                <label>Chọn ngày: &nbsp </label>
-               <input class="form-control" type="text" id="datepicker" onchange="getScheduleByDate(this)"><b>&nbsp</b>
+               <input class="form-control" type="text" id="datepicker" onchange="getScheduleByDate(this)">  <b>&nbsp</b>
                 <button class="btn btn-success" onclick="getSchedule()">Cập nhật</button>
         </div>
         <table class="table table-sm">
@@ -55,10 +64,10 @@ $nowShowingMovie = Movie::getNowshowingMovie();
         <div class="row justify-content-center fixed-bottom choose-movie" id="choose-movie" style="display: none">
 
             <?php foreach ($nowShowingMovie as $movie) { ?>
-            <div class="banner-popover" onclick="chooseMovie(this)" style="margin-bottom: 1em">
+            <div class="banner-popover" onclick="chooseMovie(this)" style="margin-bottom: 1em" id="movie<?php echo $movie->id?>">
                 <img src="../img/<?php echo $movie->banner_url ?>">
                 <h6 style="text-transform: uppercase"><?php echo $movie->name ?></h6>
-                <a><?php echo $movie->duration; ?></a><a>&nbsp phút</a>
+                <a><?php echo $movie->duration; ?>&nbsp phút</a>
             </div>
             <?php } ?>
 
