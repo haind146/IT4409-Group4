@@ -13,10 +13,25 @@ if(isset($_GET['date'])){
     die(json_encode($schedules));
 }
 
+if(is_post_request()) {
+    if(!empty($_POST['json_schedule'])) {
+       $newSchedule = json_decode($_POST['json_schedule'],true);
+
+       foreach ($newSchedule as $scd) {
+           $newScd = new Schedule($scd);
+           $newScd->save();
+       }
+       redirect_to(url_for("/admin/schedule.php"));
+
+    }
+}
+
 $page_title = 'Lập lịch chiếu';
 include_once (SHARED_PATH . '/admin_header.php');
 
 $nowShowingMovie = Movie::getNowshowingMovie();
+
+
 
 
 ?>
@@ -25,9 +40,14 @@ $nowShowingMovie = Movie::getNowshowingMovie();
     <div class="container">
         <h2 class="text-center" style="text-transform: uppercase;">Lập lịch chiếu phim</h2>
         <div class="form-group form-inline justify-content-center">
+            <form method="post" action="schedule.php" class="form-inline" >
+
+                <input style="display: none" type="text" id="json_schedule" name="json_schedule">
                <label>Chọn ngày: &nbsp </label>
-               <input class="form-control" type="text" id="datepicker" onchange="getScheduleByDate(this)">  <b>&nbsp</b>
-                <button class="btn btn-success" onclick="getSchedule()">Cập nhật</button>
+               <input class="form-control" type="text" id="datepicker" onchange="getScheduleByDate(this)" readonly>  <b>&nbsp</b>
+
+                <button class="btn btn-success" type="submit">Cập nhật</button>
+            </form>
         </div>
         <table class="table table-sm">
             <thead>
@@ -50,12 +70,13 @@ $nowShowingMovie = Movie::getNowshowingMovie();
                 if($min == 0) {$time.='00';} else $time.=$min;
                 echo $time;
                 ?></th>
-                <td onclick="addMovie(this)" id="<?php echo $id; $id++  ?>"><i class="material-icons">add</i></td>
-                <td onclick="addMovie(this)" id="<?php echo $id ; $id++ ?>"><i class="material-icons">add</i></td>
-                <td onclick="addMovie(this)" id="<?php echo $id ; $id++ ?>"><i class="material-icons">add</i></td>
-                <td onclick="addMovie(this)" id="<?php echo $id ; $id++ ?>"><i class="material-icons">add</i></td>
-                <td onclick="addMovie(this)" id="<?php echo $id ; $id++ ?>"><i class="material-icons">add</i></td>
-                <td onclick="addMovie(this)" id="<?php echo $id ; $id++ ?>"><i class="material-icons">add</i></td>
+<!--                <td onclick="addMovie(this)" id="--><?php //echo $id; $id++  ?><!--"><i class="material-icons">add</i></td>-->
+                <td  id="<?php echo $id; $id++  ?>"></td>
+                <td  id="<?php echo $id ; $id++ ?>"></td>
+                <td  id="<?php echo $id ; $id++ ?>"></td>
+                <td  id="<?php echo $id ; $id++ ?>"></td>
+                <td  id="<?php echo $id ; $id++ ?>"></td>
+                <td  id="<?php echo $id ; $id++ ?>"></td>
             </tr>
             <?php ; } ?>
 
@@ -71,9 +92,9 @@ $nowShowingMovie = Movie::getNowshowingMovie();
             </div>
             <?php } ?>
 
-        </div
+        </div>
     </div>
-
+    <div id="test"></div>
 </main>
 
 <?php include_once (SHARED_PATH . '/admin_footer.php')?>

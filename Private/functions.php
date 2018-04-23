@@ -57,7 +57,7 @@ function require_admin_login(){
         // let page proceed
 
     } else {
-        redirect_to(url_for('/cellIndex.php'));
+        redirect_to(url_for('/index.php'));
     }
 }
 

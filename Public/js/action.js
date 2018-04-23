@@ -1,6 +1,6 @@
 
 var cellIndex;
-var scheduleArr = Array;
+var scheduleArr = [];
 
 function scheduleObj(movie_id, room_id, start_time) {
     this.movie_id = movie_id;
@@ -44,10 +44,11 @@ function chooseMovie(movie) {
 
     var movie_id = movie.getAttribute("id").slice(5);
     var start_time = reformat_date(document.getElementById("datepicker").value) + " " + document.getElementById(cellIndex).parentElement.firstElementChild.innerHTML + ":00";
-    var room_id = cellIndex%6;
-    if (room_id == 0) room_id=6;
-    var schedule = new scheduleObj()
+    var room_id = cellIndex%6 +1;
 
+    var schedule = new scheduleObj(movie_id,room_id,start_time);
+    scheduleArr.push(schedule);
+    document.getElementById("json_schedule").value = JSON.stringify(scheduleArr);
 
 }
 
@@ -61,15 +62,44 @@ function removeSchedule(id) {
         document.getElementById(k).innerHTML = "<i class=\"material-icons\">add</i>";
         k +=6;
     }
+
+    var start_time =  document.getElementById(cellIndex).parentElement.firstElementChild.innerHTML + ":00"
+    start_time = reformat_date(document.getElementById("datepicker").value) + " " +start_time;
+    for (i=0;i<scheduleArr.length;i++){
+        if (scheduleArr[i].start_time == start_time && scheduleArr[i].room_id == cellIndex%6+1 ) {
+            scheduleArr.splice(i,1);
+        }
+    }
+    document.getElementById("test").innerHTML = JSON.stringify(scheduleArr);
+
 }
 
 function getScheduleByDate(element) {
     var date = element.value;
     var xmlhttp = new XMLHttpRequest();
+    scheduleArr.splice(0,scheduleArr.length);
+
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var scheduleArr = JSON.parse(this.responseText);
-            for(schedule in scheduleArr){
+            set_table();
+            for(j = 0; j<scheduleArr.length;j++){
+
+
+                cellIndex = find_cell_id(scheduleArr[j].start_time,scheduleArr[j].room_id);
+                var movie = document.getElementById("movie"+scheduleArr[j].movie_id);
+                var movieName = movie.firstElementChild.nextElementSibling.innerHTML;
+                var duration = parseInt(movie.firstElementChild.nextElementSibling.nextElementSibling.innerHTML);
+
+
+                document.getElementById(cellIndex ).innerHTML = movieName;
+                document.getElementById(cellIndex + 6).innerHTML = duration + " phút";
+                var k = cellIndex;
+                for( i = 0; i<duration; i+=20){
+                    document.getElementById(k).style.backgroundColor = "#4f6859";
+                    document.getElementById(k).removeAttribute("onclick");
+                    k +=6;
+                }
 
             }
 
@@ -86,8 +116,17 @@ function reformat_date(date) {
 }
 
 function find_cell_id(start_time,room_id) {
-    var times = start_time.slice(11,15).split(":");
+    var times = start_time.substr(11,15).split(":");
     var hour = parseInt(times[0]);
     var min = parseInt(times[1]);
-    return ((hour-10)*3+(min/20))*6+room_id;
+    return ((hour-10)*3+(min/20))*6 + parseInt(room_id) -1;
+}
+
+function set_table() {
+    for(i= 0;i<258;i++){
+        var cell = document.getElementById(i);
+        cell.setAttribute("onclick","addMovie(this)");
+        cell.innerHTML = '<i class="material-icons">add</i>';
+        cell.style.backgroundColor = "#efebdb";
+    }
 }
