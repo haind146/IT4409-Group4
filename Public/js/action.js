@@ -70,7 +70,7 @@ function removeSchedule(id) {
             scheduleArr.splice(i,1);
         }
     }
-    document.getElementById("test").innerHTML = JSON.stringify(scheduleArr);
+    document.getElementById("json_schedule").value = JSON.stringify(scheduleArr);
 
 }
 
