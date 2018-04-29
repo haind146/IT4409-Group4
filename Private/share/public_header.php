@@ -19,6 +19,8 @@
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo url_for('css/style.css') ?>" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/searchjs.js"></script>
     <title>Space Cinema</title>
 </head>
 <body>
@@ -32,10 +34,12 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 
-                <form class="form-inline my-2 my-lg-0 ">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm phim/Diễn viên" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
-                </form>
+                <div class="dropdown">
+                    <input id="searchtext" class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm phim/Diễn viên" aria-label="Search">
+                    <div id="dropdownmenu" class="dropdown-menu">
+
+                    </div>
+                </div>
 
             </div>
             <div class="">
