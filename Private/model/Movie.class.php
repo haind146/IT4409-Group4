@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -49,5 +50,10 @@ class Movie extends DatabaseObject
         $sql = "SELECT * FROM movie WHERE status = 'Đang chiếu'";
         return static::find_by_sql($sql);
     }
+    public static function getMoivesbyName($text){
+        $sql ="SElECT * FROM movie WHERE name LIKE '%".$text."%' limit 0,10";
+        return static::find_by_sql($sql);
+    }
+
 
 }
