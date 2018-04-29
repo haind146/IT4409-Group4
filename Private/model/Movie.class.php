@@ -10,9 +10,9 @@
 class Movie extends DatabaseObject
 {
     static protected $tableName = 'movie';
-    static protected $columns = ['movie_id','name','genre','director','producer','cast','duration','rating','count_rating','release_date','description','poster_url','banner_url','status'];
+    static protected $columns = ['id','name','genre','director','producer','cast','duration','rating','count_rating','release_date','description','poster_url','banner_url','status'];
 
-    public $movie_id;
+    public $id;
     public $name;
     public $genre;
     public $director;

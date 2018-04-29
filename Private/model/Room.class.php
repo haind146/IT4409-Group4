@@ -9,9 +9,9 @@
 class Room extends DatabaseObject
 {
     static protected $tableName = 'room';
-    static protected $columns = ['room_id','name','number_of_seat','width','height'];
+    static protected $columns = ['id','name','number_of_seat','width','height'];
 
-    public $room_id;
+    public $id;
     public $name;
     public $number_of_seat;
     public $width;
