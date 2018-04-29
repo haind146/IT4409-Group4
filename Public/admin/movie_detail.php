@@ -7,8 +7,6 @@
  */
 require_once ('../../Private/initialize.php');
 
-
-
     if(isset($_GET['movie_id'])){
         $id = $_GET['movie_id'];
         $movie = Movie::find_by_id($id);
