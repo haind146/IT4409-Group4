@@ -116,10 +116,10 @@
                   </ul>
                 </div>
                 <div class="col-md-6">
-                  <div class="card mb-4 box-shadow">
-                    <h4 class="text-center" >Chọn suất</h4>
-                    <div id="schedule"></div>
+                  <div class="card " style="margin-top:0; background-color: orange">
+                    <h4 class="text-center">Chọn suất</h4>
                   </div>
+                  <ul id="schedule"></ul>
                 </div>    
             </div>
         </div>
