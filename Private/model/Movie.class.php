@@ -10,9 +10,9 @@
 class Movie extends DatabaseObject
 {
     static protected $tableName = 'movie';
-    static protected $columns = ['id','name','genre','director','producer','cast','duration','rating','count_rating','release_date','description','poster_url','banner_url','status'];
+    static protected $columns = ['movie_id','name','genre','director','producer','cast','duration','rating','count_rating','release_date','description','poster_url','banner_url','status'];
 
-    public $id;
+    public $movie_id;
     public $name;
     public $genre;
     public $director;
@@ -47,7 +47,7 @@ class Movie extends DatabaseObject
     }
 
     public static function getNowshowingMovie(){
-        $sql = "SELECT * FROM movie WHERE status = 'Đang chiếu'";
+        $sql = "SELECT * FROM movie WHERE lower(status) = 'dang chieu'";
         return static::find_by_sql($sql);
     }
     public static function getMoivesbyName($text){
