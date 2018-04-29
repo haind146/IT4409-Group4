@@ -63,7 +63,7 @@ class DatabaseObject
 
          $sql = "UPDATE " . static::$tableName . " SET ";
          $sql .= join(', ', $attribute_pairs);
-         $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
+         $sql .= " WHERE ".static::$tableName."_id='" . self::$database->escape_string($this->id) . "' ";
          $sql .= "LIMIT 1";
          $result = self::$database->query($sql);
          return $result;
@@ -85,7 +85,7 @@ class DatabaseObject
         }
     }
     public function delete() {
-        $sql = "DELETE FROM " . static::$table_name . " ";
+        $sql = "DELETE FROM " . static::$tableName . " ";
         $sql .= "WHERE id='" . self::$database->escape_string($this->id) . "' ";
         $sql .= "LIMIT 1";
         $result = self::$database->query($sql);
@@ -121,7 +121,7 @@ class DatabaseObject
 
     static public function find_by_id($id) {
         $sql = "SELECT * FROM " . static::$tableName . " ";
-        $sql .= "WHERE id='" . self::$database->escape_string($id) . "'";
+        $sql .= "WHERE ".static::$tableName."_id='" . self::$database->escape_string($id) . "'";
         $obj_array = static::find_by_sql($sql);
         if(!empty($obj_array)) {
             return array_shift($obj_array);

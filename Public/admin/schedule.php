@@ -85,7 +85,7 @@ $nowShowingMovie = Movie::getNowshowingMovie();
         <div class="row justify-content-center fixed-bottom choose-movie" id="choose-movie" style="display: none">
 
             <?php foreach ($nowShowingMovie as $movie) { ?>
-            <div class="banner-popover" onclick="chooseMovie(this)" style="margin-bottom: 1em" id="movie<?php echo $movie->id?>">
+            <div class="banner-popover" onclick="chooseMovie(this)" style="margin-bottom: 1em" id="movie<?php echo $movie->movie_id?>">
                 <img src="../img/<?php echo $movie->banner_url ?>">
                 <h6 style="text-transform: uppercase"><?php echo $movie->name ?></h6>
                 <a><?php echo $movie->duration; ?>&nbsp phút</a>

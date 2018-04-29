@@ -10,9 +10,10 @@
 class Movie extends DatabaseObject
 {
     static protected $tableName = 'movie';
-    static protected $columns = ['id','name','genre','director','producer','cast','duration','rating','count_rating','release_date','description','poster_url','banner_url','status'];
+    static protected $columns = ['movie_id','name','genre','director','producer','cast','duration','rating','count_rating','release_date','description','poster_url','banner_url','status'];
 
     public $id;
+    public $movie_id;
     public $name;
     public $genre;
     public $director;
@@ -30,6 +31,7 @@ class Movie extends DatabaseObject
 
     public function __construct($args = [])
     {
+
         $this->name = $args['name'] ?? "";
         $this->genre = $args['genre']?? "";
         $this->director = $args['director'] ?? "";
@@ -43,6 +45,7 @@ class Movie extends DatabaseObject
         $this->poster_url = $args['poster_url'] ?? "";
         $this->banner_url = $args['banner_url'] ?? "";
         $this->status = $args['status'] ?? "";
+        $this->id = $this->movie_id;
 
     }
 
