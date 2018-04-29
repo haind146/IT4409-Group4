@@ -9,7 +9,7 @@
 class Ticket extends DatabaseObject
 {
     static protected $tableName = 'ticket';
-    static protected $columns = ['id','schedule_id','user_id','seat_no','price','status'];
+    static protected $columns = ['ticket_id','schedule_id','user_id','seat_no','price','status'];
 
     public $id;
     public $schedule_id;

@@ -9,9 +9,9 @@
 class Schedule extends DatabaseObject
 {
     static protected $tableName = 'schedule';
-    static protected $columns = ['id','movie_id','room_id','start_time'];
+    static protected $columns = ['schedule_id','movie_id','room_id','start_time'];
 
-    public $id;
+    public $schedule_id;
     public $movie_id;
     public $room_id;
     public $start_time;

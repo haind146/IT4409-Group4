@@ -62,7 +62,7 @@
                     <div class="row ">
                         <?php $i=0; foreach ($nowShowingMovie as $movie ) { ?>
                         <div class="col-md-4">
-                            <a href="movie_detail.php?movie_id=<?php echo $movie->id ?>" class="list-movie"><img src="../img/<?php echo $movie->banner_url ?>"></a>
+                            <a href="movie_detail.php?movie_id=<?php echo $movie->movie_id ?>" class="list-movie"><img src="../img/<?php echo $movie->banner_url ?>"></a>
                             <h6 style="text-transform: uppercase" ><?php echo $movie->name ?></h6>
                         </div>
 

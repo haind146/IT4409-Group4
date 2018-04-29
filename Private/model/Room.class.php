@@ -11,7 +11,7 @@ class Room extends DatabaseObject
     static protected $tableName = 'room';
     static protected $columns = ['id','name','number_of_seat','width','height'];
 
-    public $id;
+    public $room_id;
     public $name;
     public $number_of_seat;
     public $width;
