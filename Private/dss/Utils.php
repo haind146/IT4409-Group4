@@ -1,4 +1,5 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
 require_once 'DB_Driver.php';
 require_once 'ProcessData.php';
 
@@ -63,7 +64,7 @@ class Utils {
             $value = array_slice($row,1,6);
             $DSSTable[$key] = $value;
         }
-
+        
         # After Generation
         $price_arr = array();
         $time_arr = array();
@@ -86,7 +87,7 @@ class Utils {
         $timeAP  = $ProcessData->time_process($arrayRequired['start_time'],$time_arr);
         $genreAP = $ProcessData->genre_process($arrayRequired['genre'],$genre_arr);
         $ratingAP = $ProcessData->rating_process($arrayRequired['rating'],$rating_arr);
-        $seat_noAP = $ProcessData->seat_no_process($arrayRequired['seat_no'],$seat_no_arr,15);
+        $seat_noAP = $ProcessData->seat_no_process($arrayRequired['seat_no'],$seat_no_arr,27);
         $producerAP = $ProcessData->producer_process($arrayRequired['producer'],$producer_arr);
 
 

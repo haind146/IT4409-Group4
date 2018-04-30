@@ -1,4 +1,5 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
 include_once 'Utils.php';
 include_once 'SolutionCalculator.php';
 include_once 'Weight.php';
@@ -37,7 +38,7 @@ class DSS_Main {
             $DistancePos = $Utils->distanceToSolution($PosIdealSolution,$DTable_Weighted);
 
             //Sub step 5.2:
-            # The separation of each alternative from the posintive ideal solution is given as:
+            # The separation of each alternative from the negative ideal solution is given as:
             $DistanceNeg = $Utils->distanceToSolution($NegIdealSolution,$DTable_Weighted);
 
         # STEP 6: Calculate the relative closeness to the positive ideal solution

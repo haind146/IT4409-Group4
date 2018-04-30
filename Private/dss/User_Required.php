@@ -14,10 +14,18 @@ class User_Required{
     public function setRequired($min_price,$max_price,$start_date,$end_date,$start_time,$end_time,$genre=null,$rating=null,$seat_no=null,$producer=null){
         $this->min_price = $min_price;
         $this->max_price = $max_price;
-        $this->start_date = $start_date;
-        $this->end_date = $end_date;
-        $this->start_time = $start_time;
-        $this->end_time = $end_time;
+        if($this->isValidDate($start_date) && $this->isValidDate($end_date)){
+            $this->start_date = $start_date;
+            $this->end_date = $end_date;
+        } else {
+            echo "Invalid date required";
+        }
+        if($this->isValidDate($start_time,'H:i:s') && $this->isValidDate($end_time,'H:i:s')){
+            $this->start_time = $start_time;
+            $this->end_time = $end_time;
+        } else {
+            echo "Invalid time required";
+        }
         $this->genre = $genre;
         $this->rating = $rating;
         $this->seat_no = $seat_no;
@@ -30,6 +38,11 @@ class User_Required{
                         'genre'     => $this->genre,      'rating'   => $this->rating,
                         'seat_no'   => $this->seat_no,    'producer' => $this->producer);
         return $return;
+    }
+
+    function isValidDate($date, $format = 'Y-m-d') {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
     }
 }
 ?>
