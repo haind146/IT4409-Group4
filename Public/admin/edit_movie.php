@@ -19,6 +19,8 @@ if (!isset($_GET['movie_id'])) {
 
 $id = $_GET['movie_id'];
 $movie = Movie::find_by_id($id);
+$movie->setId();
+
 
 
 if (is_post_request()) {
@@ -52,7 +54,7 @@ if (is_post_request()) {
 
     $movie->merge_attributes($movie_arr);
     $movie->save();
-    redirect_to(url_for('/admin/movie_detail.php?movie_id=' . $movie->id));
+//    redirect_to(url_for('/admin/movie_detail.php?movie_id=' . $movie->movie_id));
 
 }
 ?>
