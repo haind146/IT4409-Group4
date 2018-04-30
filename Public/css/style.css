@@ -99,15 +99,32 @@ ul, ol {
 .showtimes-group .showtimes-row .title-movie {
     font-size: 18px;
 	line-height: 20px;
-	border: 5px ;
+	/* border: 5px ; */
 	
 }
-.border:hover{
+.movie {
+	height:90px;
+	border-bottom: 1px ridge;
+	border-right: 1px ridge;
+	border-left: 1px groove;
+}
+.movie:hover{
 	background-color : darkgrey;
 }
-.clicked {
-	background-color: yellow;
-  }
+.schedule{
+	background-color : white;
+	height:90px; 
+	border-bottom: 1px ridge;
+	border-right: 1px ridge;
+	border-left: 1px groove;
+}
+.schedule:hover{
+	background-color : darkgrey;
+}
+
+/* div:hover{
+	background-color : darkgrey;
+  } */
 .red
 {
     background-color:red;
