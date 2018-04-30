@@ -45,7 +45,6 @@ class Movie extends DatabaseObject
         $this->poster_url = $args['poster_url'] ?? "";
         $this->banner_url = $args['banner_url'] ?? "";
         $this->status = $args['status'] ?? "";
-        $this->id = $this->movie_id;
 
     }
 
@@ -58,5 +57,8 @@ class Movie extends DatabaseObject
         return static::find_by_sql($sql);
     }
 
+    public function setId(){
+        $this->id = $this->movie_id;
+    }
 
 }

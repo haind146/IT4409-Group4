@@ -11,7 +11,7 @@ class Ticket extends DatabaseObject
     static protected $tableName = 'ticket';
     static protected $columns = ['ticket_id','schedule_id','user_id','seat_no','price','status'];
 
-    public $id;
+    public $ticket_id;
     public $schedule_id;
     public $user_id;
     public $seat_no;
