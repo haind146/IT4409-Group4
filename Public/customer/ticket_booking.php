@@ -29,7 +29,7 @@ include_once (SHARED_PATH . "/customer_header.php")
                 <form action="ticket_booking.php" method="post">
                     <div class="form-group">
                         <label>Chọn số vé:</label>
-                        <input type="number" class="form-control" placeholder="Number of ticket">
+                        <input type="number" class="form-control" placeholder="Number of ticket" min="1" max="10">
                     </div>
                     <div class="form-group">
                         <label >Vị trí:</label>
@@ -43,6 +43,12 @@ include_once (SHARED_PATH . "/customer_header.php")
 
             <div class="col-md-8">
                 <h4 style="text-transform: uppercase;" class="text-center">sơ đồ rạp chiếu</h4>
+                <br>
+                <h6 class="text-center" style="border-bottom: 1px solid #1e5736;">MÀN HÌNH</h6> <br><br>
+                <div class="container-fluid room-map">
+                    <a>&#65&#49</a>
+
+                </div>
 
             </div>
         </div>

@@ -128,6 +128,10 @@ if (is_post_request()) {
                     <input class="col-sm-7 form-control" type="text" placeholder="Mô tả" name="movie[description]" value="<?php echo $movie->description ?>">
                 </div>
                 <div class="form-group row">
+                    <label class="offset-2 col-md-2 col-form-label">Giá vé cơ bản: </label>
+                    <input class="col-sm-7 form-control" type="number" placeholder="Giá vé" name="movie[ticket_price]" value="<?php echo $movie->ticket_price ?>" min="0">
+                </div>
+                <div class="form-group row">
                     <label class="offset-2 col-md-2 col-form-label">Poster: </label>
                     <input type="file" placeholder="Poster" name="movie[poster_url]"
                            accept="image/gif, image/jpeg, image/png">

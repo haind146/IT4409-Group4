@@ -36,7 +36,7 @@ if(is_post_request()){
         $new_movie = new Movie($movie_arr);
         $new_movie->save();
 
-        redirect_to(url_for("admin/movie_management.php"));
+        redirect_to(url_for("admin/movies_management.php"));
     }
 }
 ?>
@@ -107,6 +107,10 @@ if(is_post_request()){
             <div class="form-group row">
                 <label class="offset-2 col-md-2 col-form-label">Mô tả: </label>
                 <input class="col-sm-7 form-control" type="text" placeholder="Mô tả" name="movie[description]">
+            </div>
+            <div class="form-group row">
+                <label class="offset-2 col-md-2 col-form-label">Giá vé cơ bản: </label>
+                <input class="col-sm-7 form-control" type="number" placeholder="Giá vé" name="movie[ticket_price]" min="0">
             </div>
             <div class="form-group row">
                 <label class="offset-2 col-md-2 col-form-label">Poster: </label>

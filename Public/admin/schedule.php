@@ -20,6 +20,7 @@ if(is_post_request()) {
        foreach ($newSchedule as $scd) {
            $newScd = new Schedule($scd);
            $newScd->save();
+           $newScd->generate_ticket();
        }
        redirect_to(url_for("/admin/schedule.php"));
 
