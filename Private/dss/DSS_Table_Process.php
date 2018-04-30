@@ -17,7 +17,7 @@ class DSS_Table_Process{
         # Matrixalization
         $DSSTable = array();
         foreach($result as $row){
-            $key = $row['ticket_id'];
+            $key = $row['id'];
             $value = array_slice($row,1,6);
             $DSSTable[$key] = $value;
         }
