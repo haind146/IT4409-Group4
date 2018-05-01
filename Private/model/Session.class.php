@@ -86,6 +86,10 @@ class Session {
     public function clear_message() {
         unset($_SESSION['message']);
     }
+    public function getUserId(){
+        return $this->user_id;
+    }
 }
+
 
 ?>

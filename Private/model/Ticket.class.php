@@ -27,4 +27,28 @@ class Ticket extends DatabaseObject
         $this->price = $price;
         $this->status = $status;
     }
+
+    static public function find_by_schedule($schedule_id){
+        $sql = "SELECT * FROM ticket WHERE schedule_id = '" . $schedule_id . "'";
+        return Ticket::find_by_sql($sql);
+    }
+
+    static public function find_ticket($schedule_id,$seat_no) {
+        $sql = "SELECT * FROM ticket WHERE schedule_id = '" . $schedule_id . "' AND seat_no = '" . $seat_no . "';";
+        $obj_array = static::find_by_sql($sql);
+        if(!empty($obj_array)) {
+            return array_shift($obj_array);
+        } else {
+            return false;
+        }
+    }
+    public function setID(){
+        $this->id = $this->ticket_id;
+    }
+    public function set_booked(){
+        $this->status = 0;
+    }
+    public function set_customer($customer_id){
+        $this->customer_id = $customer_id;
+    }
 }

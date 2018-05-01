@@ -49,13 +49,13 @@ class Schedule extends DatabaseObject
         for ($h = 1; $h < $room->height + 1; $h++) {
 
             for ($w=1;$w<16;$w++){
-                if($w<$room->width/2+5 && $w>$room->width/2-5 && $h<$room->height/2+5 && $h >$room->height/2-5) {
+                if($w<$room->width/2+4 && $w>$room->width/2-3 && $h<$room->height/2+4 && $h >$room->height/2-3) {
                     $price = $price*1.5;
                 }
                 $seat_no = $char . $w;
                 $sql.= "('" . $this->id . "','" . "1" . "','" . $seat_no . "','" . $price . "','" . 1 . "')" .",";
 
-                if($w<$room->width/2+5 && $w>$room->width/2-5 && $h<$room->height/2+5 && $h >$room->height/2-5) {
+                if($w<$room->width/2+4 && $w>$room->width/2-3 && $h<$room->height/2+4 && $h >$room->height/2-3) {
                     $price = $price/1.5;
                 }
 
