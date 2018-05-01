@@ -13,6 +13,6 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="<?php echo url_for('js/bootstrap.bundle.js') ?>"></script>
-<script src="<?php echo url_for('js/action.js') ?>"></script>
+<script src="<?php echo url_for('js/ticket_booking.js') ?>"></script>
 </body>
 </html>

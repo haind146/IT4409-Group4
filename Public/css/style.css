@@ -131,7 +131,18 @@ ul, ol {
 }
 
 .room-map>a {
-	border: 1px solid darkslategray;
+	border: 1px solid green;
 	padding: 2px 2px 2px 2px;
 	border-radius: 20%;
+	margin: 0px 3px 3px 0px;
+}
+
+.unavailable {
+	background-color: #4e555b;
+}
+.vip {
+	background-color: #17a2b8;
+}
+.standard {
+	background-color: #ffffff;
 }

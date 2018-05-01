@@ -51,7 +51,7 @@ class Movie extends DatabaseObject
     }
 
     public static function getNowshowingMovie(){
-        $sql = "SELECT * FROM movie WHERE lower(status) = 'dang chieu'";
+        $sql = "SELECT * FROM movie WHERE lower(status) = 'Đang chiếu'";
         return static::find_by_sql($sql);
     }
     public static function getMoivesbyName($text){
