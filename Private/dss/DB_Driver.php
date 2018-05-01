@@ -1,4 +1,5 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
 class DB_Driver {
     private $__connect;
 
@@ -6,7 +7,7 @@ class DB_Driver {
     public function connect() {
         if(!$this->__connect) {
             $this->__connect = mysqli_connect('localhost','root','123456','cinemaproject')
-                        or die ('Connection failed: '.$this->__connect->connect_error);
+                        or die ('Connection failed: '.$__connect->connect_error);
             //Process font error
             mysqli_query($this->__connect,"SET character_set_results = 'utf8' , character_set_client = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
         }
@@ -124,7 +125,7 @@ class DB_Driver {
         }
         $this->connect();
         
-        #echo "<hr/>".$SQLcmd."<hr/>";
+        //echo "<hr/>".$SQLcmd."<hr/>";
         
         $result = mysqli_query($this->__connect,$SQLcmd);
         if(!$result) {
@@ -138,6 +139,32 @@ class DB_Driver {
 
         //delete result temp%
         mysqli_free_result($result);
+        $this->dis_connect();
+        return $return;
+    }
+
+    public function get_no_seat_of_room($sticket_id)
+    {
+        # code...
+    }
+
+    public function readvietnamese()
+    {
+        $SQLcmd = "SELECT * FROM movie WHERE movie_id = 9";
+        $this->connect();
+        $result = mysqli_query($this->__connect,$SQLcmd);
+        if(!$result) {
+            die("Error syntax in query statement");
+        }
+
+        $return = array();
+        while($row = mysqli_fetch_assoc($result)) {
+            $return[] = $row;
+        }
+
+        //delete result temp%
+        mysqli_free_result($result);
+        $this->dis_connect();
         return $return;
     }
 }
