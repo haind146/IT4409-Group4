@@ -1,47 +1,42 @@
-<?php
-require_once('../Private/initialize.php');
 
-if($session->is_logged_in() && $session->role === 'admin'){
-    redirect_to(url_for('/admin/home.php'));
-}
+<?php require_once ('../Private/initialize.php');
 
-
-if(is_post_request()) {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $user = User::find_by_username($username);
-
-    if ($user != false && $user->verify_password($password)){
-        global $session;
-        $session->login($user);
-        redirect_to(url_for('/admin/home.php'));
-
-    }
-    else {
-        redirect_to(url_for('/index.php'));
-    }
-}
 ?>
 
-<!doctype html>
-<?php include "../Private/share/public_header.php"?>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Hai Nguyen
+ * Date: 3/20/2018
+ * Time: 3:47 PM
+ */
+
+$page_title = 'HOME';
+include_once (SHARED_PATH . "/public_header.php");
+$nowShowingMovie = Movie::getNowshowingMovie();
+
+
+?>
+
+
 <main>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <?php $i = 1 ; for ($i;$i<count($nowShowingMovie);$i++) { ?>
+
+                <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i ?>"></li>
+            <?php } ?>
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100 " src="img/movie1.jpg" alt="First slide">
+                <img class="d-block w-100 " src="static/img/movie1.jpg ?>" alt="First slide">
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="img/movie2.jpg" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="img/movie3.jpg" alt="Third slide">
-            </div>
+            <?php foreach ($nowShowingMovie as $movie ) { ?>
+                <div class="carousel-item">
+                    <img class="d-block w-100 " src="../static/img/<?php echo $movie->banner_url ?>" alt="First slide">
+                </div>
+            <?php } ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -64,29 +59,15 @@ if(is_post_request()) {
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="container">
                     <div class="row ">
-                        <div class="col">
-                            <a href="#" class="list-movie"><img src="img/movie1.jpg"></a>
-                            <h6 >Tên phim</h6>
-                        </div>
-                        <div class="col list-movie">
-                            <img src="img/movie2.jpg">
-                        </div>
-                        <div class="col list-movie">
-                            <img src="img/movie3.jpg">
-                        </div>
+                        <?php $i=0; foreach ($nowShowingMovie as $movie ) { ?>
+                            <div class="col-md-4">
+                                <a href="<?php echo url_for("movie_detail.php?movie_id=") . $movie->movie_id ?>" class="list-movie"><img src="static/img/<?php echo $movie->banner_url ?>"></a>
+                                <h6 style="text-transform: uppercase" ><?php echo $movie->name ?></h6>
+                            </div>
+
+                            <?php if(++$i > 5) break;} ?>
                     </div>
-                    <div class="row ">
-                        <div class="col">
-                            <a href="#" class="list-movie"><img src="img/movie4.jpg"></a>
-                            <h6 >Tên phim</h6>
-                        </div>
-                        <div class="col list-movie">
-                            <img src="img/movie5.jpg">
-                        </div>
-                        <div class="col list-movie">
-                            <img src="img/movie6.jpg">
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -144,11 +125,4 @@ if(is_post_request()) {
     </div>
 </main>
 
-<footer>
-
-</footer>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/bootstrap.bundle.js"></script>
-</body>
-</html>
+<?php include(SHARED_PATH . '/public_footer.php'); ?>

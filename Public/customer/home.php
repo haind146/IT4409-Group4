@@ -11,10 +11,9 @@
  * Time: 3:47 PM
  */
 
-    $page_title = 'HOME';
-    include_once ('../../private/share/admin_header.php');
-    require_admin_login();
-    $nowShowingMovie = Movie::getNowshowingMovie();
+$page_title = 'HOME';
+include_once (SHARED_PATH . "/customer_header.php");
+$nowShowingMovie = Movie::getNowshowingMovie();
 
 
 ?>
@@ -26,7 +25,7 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <?php $i = 1 ; for ($i;$i<count($nowShowingMovie);$i++) { ?>
 
-            <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i ?>"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i ?>"></li>
             <?php } ?>
         </ol>
         <div class="carousel-inner">
@@ -34,9 +33,9 @@
                 <img class="d-block w-100 " src="../static/img/movie1.jpg ?>" alt="First slide">
             </div>
             <?php foreach ($nowShowingMovie as $movie ) { ?>
-            <div class="carousel-item">
-                <img class="d-block w-100 " src="../static/img/<?php echo $movie->banner_url ?>" alt="First slide">
-            </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 " src="../static/img/<?php echo $movie->banner_url ?>" alt="First slide">
+                </div>
             <?php } ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -61,12 +60,12 @@
                 <div class="container">
                     <div class="row ">
                         <?php $i=0; foreach ($nowShowingMovie as $movie ) { ?>
-                        <div class="col-md-4">
-                            <a href="../movie_detail.php?movie_id=<?php echo $movie->movie_id ?>" class="list-movie"><img src="../static/img/<?php echo $movie->banner_url ?>"></a>
-                            <h6 style="text-transform: uppercase" ><?php echo $movie->name ?></h6>
-                        </div>
+                            <div class="col-md-4">
+                                <a href="<?php echo url_for("movie_detail.php?movie_id=") . $movie->movie_id ?>" class="list-movie"><img src="../static/img/<?php echo $movie->banner_url ?>"></a>
+                                <h6 style="text-transform: uppercase" ><?php echo $movie->name ?></h6>
+                            </div>
 
-                        <?php if(++$i > 5) break;} ?>
+                            <?php if(++$i > 5) break;} ?>
                     </div>
 
                 </div>
@@ -126,4 +125,4 @@
     </div>
 </main>
 
-<?php include(SHARED_PATH . '/admin_footer.php'); ?>
+<?php include(SHARED_PATH . '/customer_footer.php'); ?>

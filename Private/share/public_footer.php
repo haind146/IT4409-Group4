@@ -12,7 +12,7 @@
 </footer>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="<?php echo url_for('js/bootstrap.bundle.js') ?>"></script>
-<script src="<?php echo url_for('js/ticket_booking.js') ?>"></script>
+<script src="<?php echo url_for('static/js/bootstrap.bundle.js') ?>"></script>
+<script src="<?php echo url_for('static/js/public.js') ?>"></script>
 </body>
 </html>

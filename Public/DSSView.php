@@ -8,7 +8,7 @@
 ?>
 <html>
 <body>
-<form action="../Private/controller/DSSController.php" method="post">
+<form action="controller/DSSController.php" method="post">
     Ngày bắt đầu<input type="date" name="date1" value = <?php echo date('Y-m-d'); ?>>
     Ngày kết thúc<input type="date" name="date2">
     Thời gian bắt đầu<input type="time" name="time1">

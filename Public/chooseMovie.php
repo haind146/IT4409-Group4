@@ -1,26 +1,7 @@
 <?php
     require_once('../Private/initialize.php');
 
-    if($session->is_logged_in() && $session->role === 'admin'){
-        redirect_to(url_for('/admin/home.php'));
-    }
 
-
-    if(is_post_request()) {
-        $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? '';
-        $user = User::find_by_username($username);
-
-        if ($user != false && $user->verify_password($password)){
-            global $session;
-            $session->login($user);
-            redirect_to(url_for('/admin/home.php'));
-
-        }
-        else {
-            redirect_to(url_for('/index.php'));
-        }
-    }
 ?>
 
 <!doctype html>
@@ -32,8 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
   <title>Space Cinema</title>
   
   
@@ -134,9 +115,9 @@
   </footer>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="js/jquery-3.3.1.slim.min.js"></script>`
-  <script src="js/bootstrap.bundle.js"></script>
-  <script language="javascript" type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-  <script language="javascript" type="text/javascript" src="js/ajax.js"></script>
+  <script src="static/js/jquery-3.3.1.slim.min.js"></script>`
+  <script src="static/js/bootstrap.bundle.js"></script>
+  <script language="javascript" type="text/javascript" src="static/js/jquery-1.6.2.min.js"></script>
+  <script language="javascript" type="text/javascript" src="static/js/ajax.js"></script>
 </body>
 </html>

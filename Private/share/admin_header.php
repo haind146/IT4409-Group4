@@ -15,9 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo url_for('/css/bootstrap.min.css') ?>" />
+    <link rel="stylesheet" href="<?php echo url_for('static/css/bootstrap.min.css') ?>" />
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?php echo url_for('/css/style.css') ?>" type="text/css" />
+    <link rel="stylesheet" href="<?php echo url_for('static/css/style.css') ?>" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title><?php echo $page_title ?> </title>
 </head>
@@ -25,7 +25,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a href="home.php"> <img class="logo" src="../../Public/img/logo.png"> </a>
+            <a href="home.php"> <img class="logo" src="../../Public/static/img/logo.png"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                     <a class="dropdown-item" href="#">Thông tin cá nhân</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo url_for('/logout.php'); ?>">Đăng xuất</a>
+                    <a class="dropdown-item" href="<?php echo url_for('/controller/logout.php'); ?>">Đăng xuất</a>
                 </div>
             </div>
         </div>

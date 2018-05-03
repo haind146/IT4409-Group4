@@ -16,19 +16,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo url_for('css/bootstrap.min.css') ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo url_for('static/css/bootstrap.min.css') ?>" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?php echo url_for('css/style.css') ?>" type="text/css">
+    <link rel="stylesheet" href="<?php echo url_for('static/css/style.css') ?>" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/searchjs.js"></script>
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/searchjs.js"></script>
     <title>Space Cinema</title>
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <img class="logo" src="img/logo.png">
+            <img class="logo" src="<?php echo url_for("static/img/logo.png")?>">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -57,7 +57,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="index.php" method="post">
+                                <form action="<?php echo url_for("controller/login.php") ?>" method="post">
                                     <div class="form-group">
                                         <label for="username">Tên đăng nhập</label>
                                         <input type="text" class="form-control" id="username" name="username"  placeholder="Username">
@@ -79,11 +79,9 @@
     </nav>
     <div class="container">
         <nav class="nav justify-content-lg-center">
-            <a class="nav-link active" href="#">Lịch chiếu</a>
-            <a class="nav-link" href="#">Phim đang chiếu</a>
-            <a class="nav-link" href="#">Phim sắp chiếu</a>
+            <a class="nav-link active" href="#">Đặt vé</a>
+            <a class="nav-link" href="#">Phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
-            <a class="nav-link" href="#">Thành viên</a>
             <a class="nav-link" href="#">Gợi ý suất chiếu</a>
 
         </nav>

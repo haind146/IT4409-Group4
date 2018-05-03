@@ -29,7 +29,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a href="home.php"> <img class="logo" src="../../Public/img/logo.png"> </a>
+            <a href="<?php echo url_for("/customer/home.php")?>"> <img class="logo" src="../../Public/static/img/logo.png"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Thông tin cá nhân</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Lịch sử xem</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo url_for('/logout.php'); ?>">Đăng xuất</a>
                 </div>

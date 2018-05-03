@@ -1,0 +1,148 @@
+.logo {
+	height: 50px;
+	width: auto;
+}
+.carousel {
+	margin-top: -1em;
+}
+.carousel-item>img{
+	height: 30rem;
+	width: all;
+	object-fit: cover;
+}
+.list-movie>img{
+	height: 12rem;
+	width: 100%;
+	object-fit: cover;
+}
+h6{
+	margin-top: 0.5rem;
+	text-transform: uppercase;
+	color: #5b5d60;
+}
+.carousel-indicators .active{
+	background-color: green;
+}
+
+#success-icon {
+	width: 200px;
+	height: 200px;
+	margin-top: 8rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+
+}
+.movie-item>img{
+    height: 160px;
+    width: 120px;
+    object-fit: cover;
+}
+
+.poster-detail>img{
+	height: 21em;
+	width: 14em;
+	object-fit: cover;
+}
+.side-banner>img{
+    height: 13em;
+    width: 18em;
+    object-fit: cover;
+}
+main{
+	background-color: #efebdb;
+	padding-top: 1em;
+	min-height: 50em;
+}
+
+.banner-popover>img{
+	height: 8em;
+	width: 12em;
+	object-fit: cover;
+}
+.banner-popover{
+	margin-left: 1em;
+}
+
+.choose-movie{
+	background-color: #ffffff;
+	padding: 1em 6em 1em 6em;
+
+}
+table {
+	text-align: center;
+}
+.showtimes-group .showtimes-row:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+ul li {
+    list-style: none;
+}
+.list-group {
+    padding-left: 0;
+	margin-bottom: 20px;
+	padding-top:0;
+}
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+.title-movie {
+	position: relative;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px
+	/* color: black */
+}
+.showtimes-group .showtimes-row .title-movie {
+    font-size: 18px;
+	line-height: 20px;
+	/* border: 5px ; */
+	
+}
+.movie {
+	height:90px;
+	border-bottom: 1px ridge;
+	border-right: 1px ridge;
+	border-left: 1px groove;
+}
+.movie:hover{
+	background-color : darkgrey;
+}
+.schedule{
+	background-color : white;
+	height:90px; 
+	border-bottom: 1px ridge;
+	border-right: 1px ridge;
+	border-left: 1px groove;
+}
+.schedule:hover{
+	background-color : darkgrey;
+}
+
+/* div:hover{
+	background-color : darkgrey;
+  } */
+.red
+{
+    background-color:red;
+}
+
+.room-map>a {
+	border: 1px solid green;
+	padding: 2px 2px 2px 2px;
+	border-radius: 20%;
+	margin: 0px 3px 3px 0px;
+}
+
+.unavailable {
+	background-color: #4e555b;
+}
+.vip {
+	background-color: #17a2b8;
+}
+.standard {
+	background-color: #ffffff;
+}

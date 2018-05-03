@@ -6,7 +6,11 @@
  * Time: 9:17 PM
  */
 require_once ('../Private/initialize.php');
-include_once (SHARED_PATH . '/public_header.php');
+if ($session->role == "customer") {
+    include_once (SHARED_PATH . "/customer_header.php");
+} else {
+    include_once(SHARED_PATH . '/public_header.php');
+}
 
 
 if(isset($_GET['movie_id'])){
@@ -14,7 +18,7 @@ if(isset($_GET['movie_id'])){
     $movie = Movie::find_by_id($id);
     $nowShowingMovies = Movie::getNowshowingMovie();
 } else {
-    redirect_to(url_for('admin/movies_management.php'));
+    redirect_to(url_for('index.php'));
 }
 
 
@@ -26,7 +30,7 @@ if(isset($_GET['movie_id'])){
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-sm-4 poster-detail">
-                            <img src="img/<?php echo $movie->poster_url ?>">
+                            <img src="static/img/<?php echo $movie->poster_url ?>">
 
                         </div>
                         <div class="col-sm-8">
@@ -55,7 +59,8 @@ if(isset($_GET['movie_id'])){
                     <h5>CÁC PHIM ĐANG CHIẾU</h5>
                     <?php foreach ($nowShowingMovies as $nowMovie) { ?>
                         <div class="side-banner">
-                            <img src="img/<?php echo $nowMovie->banner_url ?>">
+                            <a class="side-banner" href="<?php echo url_for("movie_detail.php?movie_id=". $nowMovie->movie_id)?>"><img src="img/<?php echo $nowMovie->banner_url ?>"></a>
+
                             <h6><?php echo $nowMovie->name ?></h6>
                         </div>
                     <?php } ?>
@@ -66,5 +71,9 @@ if(isset($_GET['movie_id'])){
     </main>
 
 <?php
-include_once (SHARED_PATH . "/public_footer.php")
+if ($session->role == "customer") {
+    include_once (SHARED_PATH . "/customer_footer.php");
+} else {
+    include_once(SHARED_PATH . '/public_footer.php');
+}
 ?>

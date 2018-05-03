@@ -27,7 +27,7 @@ class User extends DatabaseObject
     {
         $this->firstname = $arg['firstname'] ?? '';
         $this->lastname = $arg['lastname'] ?? '';
-        $this->phonenumber = $arg['phonenumber'];
+        $this->phonenumber = $arg['phonenumber'] ?? '';
         $this->username = $arg['username'] ?? '';
         $this->password = $arg['password'] ?? '';
         $this->role = $arg['role'] ?? '';

@@ -25,7 +25,7 @@ include_once (SHARED_PATH . '/admin_header.php');
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-sm-4 poster-detail">
-                            <img src="../img/<?php echo $movie->poster_url ?>">
+                            <img src="../static/img/<?php echo $movie->poster_url ?>">
 
                         </div>
                         <div class="col-sm-8">
@@ -53,7 +53,8 @@ include_once (SHARED_PATH . '/admin_header.php');
                     <h5>CÁC PHIM ĐANG CHIẾU</h5>
                     <?php foreach ($nowShowingMovies as $nowMovie) { ?>
                         <div class="side-banner">
-                            <img src="../img/<?php echo $nowMovie->banner_url ?>">
+                            <a class="side-banner" href="<?php echo url_for("admin/movie_detail.php?movie_id=". $nowMovie->movie_id)?>"><img src="<?php echo url_for("static/img/") . $nowMovie->banner_url ?>"></a>
+
                             <h6><?php echo $nowMovie->name ?></h6>
                         </div>
                     <?php } ?>

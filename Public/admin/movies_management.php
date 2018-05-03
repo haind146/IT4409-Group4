@@ -30,7 +30,7 @@ $nowShowingMovies = Movie::getNowshowingMovie();
             <?php foreach ($nowShowingMovies as $movie) { ?>
             <div class="row" style="margin-top: 1em;">
                 <div class="movie-item col-md-2 offset-1">
-                    <img src="../img/<?php echo $movie->poster_url ?>">
+                    <img src="../static/img/<?php echo $movie->poster_url ?>">
                 </div>
                 <div class="col-md-6">
                     <h4 style="text-transform: uppercase"> <?php echo $movie->name ?> </h4>
