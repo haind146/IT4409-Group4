@@ -13,30 +13,41 @@ $result = $database->query($sql);
 include_header();
 
 ?>
+<script type="text/javascript" src="static/js/dss.js"></script>
     <main>
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <form action="controller/DSSController.php" method="post">
+
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label>Tên phim</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-6">
                                 <label>Ngày bắt đầu</label>
-                                <input type="date" class="form-control" name="date1" value= <?php echo date('Y-m-d'); ?>>
+                                <input type="date" class="form-control" id="date1" value= <?php echo date('Y-m-d'); ?>>
                             </div>
                             <div class="form-group col-6">
                                 <label>Ngày kết thúc</label>
-                                <input type="date" class="form-control" name="date2">
+                                <input type="date" class="form-control" id="date2">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-6">
                                 <label>Thời gian bắt đầu</label>
-                                <input type="time" name="time1" class="form-control">
+                                <input type="time" id="time1" class="form-control">
                             </div>
                             <div class="form-group col-6">
                                 <label>Thời gian kết thúc</label>
-                                <input type="time" name="time2" class="form-control">
+                                <input type="time" id="time2" class="form-control">
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Độ quan trọng</label>
+                                <input type="number" class="form-control" min="1" max="10" id="time">
                             </div>
                         </div>
 
@@ -46,21 +57,17 @@ include_header();
                         <div class="form-row">
                             <div class="form-group col-8">
                                 <label>Giá thấp nhất</label>
-                                <input type="number" class="form-control" name="minprice">
-                            </div>
-                            <div class="form-group col-4">
-                                <label>Độ quan trọng</label>
-                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                                <input type="number" class="form-control" id="minprice">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-8">
                                 <label>Giá cao nhất</label>
-                                <input type="number" class="form-control" name="maxprice">
+                                <input type="number" class="form-control" id="maxprice">
                             </div>
                             <div class="form-group col-4">
                                 <label>Độ quan trọng</label>
-                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                                <input type="number" class="form-control" min="1" max="10" id="price">
                             </div>
 
                         </div>
@@ -77,7 +84,7 @@ include_header();
                             </div>
                             <div class="form-group col-4">
                                 <label>Độ quan trọng</label>
-                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                                <input type="number" class="form-control" min="1" max="10" id="gen">
                             </div>
                         </div>
                         <div class="form-row">
@@ -88,38 +95,38 @@ include_header();
                             </div>
                             <div class="form-group col-4">
                                 <label>Độ quan trọng</label>
-                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                                <input type="number" class="form-control" min="1" max="10" id="pro">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-8">
                                 <label>Điểm rating</label>
-                                <input type="text" class="form-control" name="rating">
+                                <input type="text" class="form-control" id="rating">
                             </div>
                             <div class="form-group col-4">
                                 <label>Độ quan trọng</label>
-                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                                <input type="number" class="form-control" min="1" max="10" id="rate">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-8">
                                 <label>Ghế muốn ngồi</label>
-                                <input type="text" class="form-control" name="seatno">
+                                <input type="text" class="form-control" id="seatno">
                             </div>
                             <div class="form-group col-4">
                                 <label>Độ quan trọng</label>
-                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                                <input type="number" class="form-control" min="1" max="10" id="seat">
                             </div>
                         </div>
 
 
 
-                        <input class="btn btn-success" type="submit" value="submit">
+                        <input class="btn btn-success" type="submit" value="submit" id="button">
 
 
-                    </form>
+
                 </div>
                 <div class="col-md-8">
                     <table class="table table-striped">
@@ -133,22 +140,10 @@ include_header();
                             <th scope="col">Nhà sản xuất</th>
                             <th scope="col">Ghế</th>
                             <th scope="col">Giá vé</th>
-                            <th scope="col"></th>
+                            <th scope="col">Đặt vé</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>1</td>
-                            <td>Infinity War</td>
-                            <td>2018-05-05 14:00:00</td>
-                            <td>Hành động</td>
-                            <td>MAVEL</td>
-                            <td>F4</td>
-                            <td>50000</td>
-                            <td><a href="#">Đặt vé</a></td>
-                        </tr>
-
+                        <tbody id="tbody">
                         </tbody>
                     </table>
                 </div>

@@ -16,11 +16,12 @@ class Utils {
 
     public function distanceToSolution($solution,$DSS_Weighted)
     {
+        $DistanceMatrix = array();
         foreach ($DSS_Weighted as $key => $value) {
             $nvalue = array($value['price'],$value['start_time'],$value['genre'],$value['rating'],$value['seat_no'],$value['producer']);
-            $DSS_Weighted[$key] = $this->distance($solution,$nvalue);
+            $DistanceMatrix[$key] = $this->distance($solution,$nvalue);
         }
-        return $DSS_Weighted;
+        return $DistanceMatrix;
     }
 
     /**
@@ -55,7 +56,7 @@ class Utils {
     public function DTable_Generating($arrayRequired){
         $DBconnector = new DB_Driver();
         $ProcessData = new ProcessData();
-        $result = $DBconnector->getData($arrayRequired['min_price'],$arrayRequired['max_price'],$arrayRequired['start_date'],$arrayRequired['end_date'],$arrayRequired['start_time'],$arrayRequired['end_time'],null,null,null,null);
+        $result = $DBconnector->getData($arrayRequired['min_price'],$arrayRequired['max_price'],$arrayRequired['start_date'],$arrayRequired['end_date'],$arrayRequired['start_time'],$arrayRequired['end_time'],null,null,null,null,$arrayRequired['namefilm']);
 
         # Matrixalization
         $DSSTable = array();
@@ -87,7 +88,7 @@ class Utils {
         $timeAP  = $ProcessData->time_process($arrayRequired['start_time'],$time_arr);
         $genreAP = $ProcessData->genre_process($arrayRequired['genre'],$genre_arr);
         $ratingAP = $ProcessData->rating_process($arrayRequired['rating'],$rating_arr);
-        $seat_noAP = $ProcessData->seat_no_process($arrayRequired['seat_no'],$seat_no_arr,27);
+        $seat_noAP = $ProcessData->seat_no_process($arrayRequired['seat_no'],$seat_no_arr,15);
         $producerAP = $ProcessData->producer_process($arrayRequired['producer'],$producer_arr);
 
 

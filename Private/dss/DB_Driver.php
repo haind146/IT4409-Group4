@@ -102,7 +102,7 @@ class DB_Driver {
         return $return;
     }
 
-    public function getData($min_price,$max_price,$start_date,$end_date,$start_time,$end_time,$genre=null,$rating=null,$seat_no=null,$producer=null){
+    public function getData($min_price,$max_price,$start_date,$end_date,$start_time,$end_time,$genre=null,$rating=null,$seat_no=null,$producer=null,$namefilm= null){
         $SQLcmd = "SELECT ticket_id,price,start_time,genre,rating,seat_no,producer";
         $SQLcmd .= " FROM movie, schedule, ticket";
         $SQLcmd .= " WHERE (movie.movie_id = schedule.movie_id)";
@@ -117,15 +117,15 @@ class DB_Driver {
         if($rating){
             $SQLcmd .= " AND (rating >= $rating)";
         }
-        if($seat_no){
-            $SQLcmd .= " AND (seat_no = $seat_no)";
-        }
         if($producer){
             $SQLcmd .= " AND (producer = $producer)";
         }
+        if($namefilm){
+            $SQLcmd .= " AND (movie.name LIKE '%$namefilm%')";
+        }
         $this->connect();
         
-        //echo "<hr/>".$SQLcmd."<hr/>";
+//        echo "<hr/>".$SQLcmd."<hr/>";
         
         $result = mysqli_query($this->__connect,$SQLcmd);
         if(!$result) {

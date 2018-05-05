@@ -82,7 +82,7 @@
             <a class="nav-link active" href="#">Đặt vé</a>
             <a class="nav-link" href="#">Phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
-            <a class="nav-link" href="#">Gợi ý suất chiếu</a>
+            <a class="nav-link" href="DSSView.php">Gợi ý suất chiếu</a>
 
         </nav>
     </div>

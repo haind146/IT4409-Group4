@@ -10,15 +10,16 @@ class ProcessData {
             $price_indexed[$price] = $price;
         }
 
-        # Diference value
+        # Vector nomalization
+        $root = 0;
         foreach ($price_indexed as $key => $value) {
-            $price_indexed[$key] = $value - $price_required;
+            $root += (1/$value)**2;
         }
 
-        # Linear generation
-        $maxprice = max(array_values($price_indexed));
+        $denominator = sqrt($root);
+
         foreach ($price_indexed as $key => $value) {
-            $price_indexed[$key] = round(($maxprice - $value)/$maxprice,6);
+            $price_indexed[$key] = round((1/$value)/$denominator,10);
         }
         foreach ($price_indexed as $key => $value) {
             foreach ($price_array as $nkey => $nvalue) {
@@ -37,14 +38,20 @@ class ProcessData {
             $time_indexed[$time] = $timearr[1];
         }
         # Time string to timestamp
-        $time = strtotime($time_required);
+        $finaltime = strtotime('00:00:00');
         foreach ($time_indexed as $key => $value) {
-            $time_indexed[$key] = strtotime($value) - $time;
+            $time_indexed[$key] = abs(strtotime($value) - $finaltime);
         }
-        # Linear generation
-        $maxtime = max(array_values($time_indexed));
+
+        # Vector nomalization
+        $root = 0;
         foreach ($time_indexed as $key => $value) {
-            $time_indexed[$key] = round(($maxtime-$value)/$maxtime,6);
+            $root += (1/$value)**2;
+        }
+        
+        $denominator = sqrt($root);
+        foreach ($time_indexed as $key => $value) {
+            $time_indexed[$key] = round((1/$value)/$denominator,10);
         }
         # Return value
         foreach ($time_indexed as $key => $value) {
@@ -126,7 +133,7 @@ class ProcessData {
 
     public function convert_seat($seat_no_arr,$no_seat_a_row){
         # This is a seat, not array
-        $char_arr = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y'];
+        $char_arr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z'];
         $char = $seat_no_arr[0];
         foreach($char_arr as $key => $value) {
             if($char == $value){
@@ -138,6 +145,9 @@ class ProcessData {
 
     public function seat_no_process($seat_no_required, $seat_no_arr, $no_seat_a_row){
         # Convert to number
+        if($seat_no_required == null){
+            $seat_no_required = 'E7';
+        }
         $seat_no_array = array();
         foreach ($seat_no_arr as $key => $value) {
             $seat_no_array[$key] = $this->convert_seat($value,$no_seat_a_row);
@@ -150,26 +160,31 @@ class ProcessData {
             $seat_no_indexed[$value] = $value;
         }
 
-        # Linear generation
+        # Vector normalization
         foreach ($seat_no_indexed as $key => $value) {
-            $seat_no_indexed[$key] = abs($value - $seat_no_required);
+            $seat_no_indexed[$key] = abs($value - $seat_no_required) + 1;
+        }
+        
+        $root = 0;
+        foreach ($seat_no_indexed as $key => $value) {
+            $root += (1/$value)**2;
         }
 
-        $maxseat = max(array_values($seat_no_indexed));
+        $denominator = sqrt($root);
         
         foreach ($seat_no_indexed as $key => $value) {
-            $seat_no_indexed[$key] = round(($maxseat-$value)/$maxseat,6);
+            $seat_no_indexed[$key] = round((1/$value)/$denominator,10);
         }
 
         # return value
         foreach ($seat_no_indexed as $key => $value) {
-            foreach ($seat_no_arr as $nkey => $nvalue) {
+            foreach ($seat_no_array as $nkey => $nvalue) {
                 if($nvalue == $key) {
-                    $seat_no_arr[$nkey] = $value;
+                    $seat_no_array[$nkey] = $value;
                 }
             }
         }
-        return $seat_no_arr;
+        return $seat_no_array;
     }
 
     public function producer_process($producer_required, $producer_arr){

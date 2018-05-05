@@ -42,14 +42,15 @@ if(!empty($_POST)){
                 $json['start_time']=$schedule->start_time;
                 $json['price']=$ticket->price;
                 $json['genre']=$movie->genre;
-                $json['producer']=$moive->producer;
+                $json['producer']=$movie->producer;
                 $json['rating']=$movie->rating;
                 $json['seat_no']=$ticket->seat_no;
+                $json['movie_name']=$movie->name;
                 array_push($result,$json);
                 $i++;
 
             }
-            echo json_encode($result);
+            echo print_r($result);
         }
         else{
             $result = array();
@@ -62,13 +63,14 @@ if(!empty($_POST)){
                 $json['start_time']=$schedule->start_time;
                 $json['price']=$ticket->price;
                 $json['genre']=$movie->genre;
-                $json['producer']=$moive->producer;
+                $json['producer']=$movie->producer;
                 $json['rating']=$movie->rating;
                 $json['seat_no']=$ticket->seat_no;
+                $json['movie_name']=$movie->name;
                 array_push($result,$json);
 
             }
-            echo json_encode($result);
+            echo print_r($result);
         }
     }
     else echo "Không có phim thỏa mãn";
