@@ -24,7 +24,7 @@
 
             <div class="col-md-4">
                 <h3>Lecturer</h3>
-                <strong>Đỗ Bá Lâm</strong>
+                <strong>TS. Đỗ Bá Lâm</strong>
             </div>
         </div>
 

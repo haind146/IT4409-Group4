@@ -5,32 +5,152 @@
  * Date: 4/30/2018
  * Time: 9:24 PM
  */
+require_once("../Private/initialize.php");
+$sql = "SELECT DISTINCT producer FROM movie WHERE 1";
+$result = $database->query($sql);
+
+
+include_header();
+
 ?>
-<html>
-<body>
-<form action="controller/DSSController.php" method="post">
-    Ngày bắt đầu<input type="date" name="date1" value = <?php echo date('Y-m-d'); ?>>
-    Ngày kết thúc<input type="date" name="date2">
-    Thời gian bắt đầu<input type="time" name="time1">
-    Thời gian kết thúc<input type="time" name="time2">
-    Min price<input type="number" name="minprice">
-    Max price<input type="number" name="maxprice">
-    Thể loại<input type="checkbox" name="genre[]" value="Kinh dị"> Kinh dị
-    <input type="checkbox" name="genre[]" value="Hài"> Hài
-    Nhà sản suất<input type="checkbox" name="producer[]" value="VTC"> VTC
-    <input type="checkbox" name="producer[]" value="Marvel"> Marvel
-    Điểm rating<input type="text" name="rating">
-    Ghê muốn ngồi<input type="text" name="seatno">
-    Chỉ số quan trọng về giá <input type="number" name="price">
-    Chỉ số quan trọng về thời gian <input type="number" name="time">
-    Chỉ số quan trọng về thể loại <input type="number" name="gen">
-    Chỉ số quan trọng về rating <input type="number" name="rate">
-    Chỉ số quan trọng về ghể <input type="number" name="seat">
-    Chỉ số quan trọng về nhà sản suất <input type="number" name="pro">
-    <input type="submit" value="submit">
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="controller/DSSController.php" method="post">
+
+                        <div class="form-group">
+                            <label>Ngày bắt đầu</label>
+                            <input type="date" class="form-control" name="date1" value= <?php echo date('Y-m-d'); ?>>
+                        </div>
 
 
-</form>
-</body>
+                        <div class="form-group">
+                            <label>Ngày kết thúc</label>
+                            Ngày kết thúc<input type="date" class="form-control" name="date2">
+                        </div>
+                        <div class="form-group">
+                            <label>Thời gian bắt đầu</label>
+                            <input type="time" name="time1" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Thời gian kết thúc</label>
+                            <input type="time" name="time2" class="form-control">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                <label>Giá thấp nhất</label>
+                                <input type="number" class="form-control" name="minprice">
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Độ quan trọng</label>
+                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                <label>Giá cao nhất</label>
+                                <input type="number" class="form-control" name="maxprice">
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Độ quan trọng</label>
+                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                            </div>
 
-</html>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                <label>Thể loại</label> <br>
+                                <input type="checkbox" name="genre[]" value="Kinh dị"> Kinh dị
+                                <input type="checkbox" name="genre[]" value="Hài"> Hài
+                                <input type="checkbox" name="genre[]" value="Hành động"> Hành động
+                                <input type="checkbox" name="genre[]" value="Tình cảm"> Tình cảm
+                                <input type="checkbox" name="genre[]" value="Hoạt hình"> Hoạt hình
+                                <input type="checkbox" name="genre[]" value="Thần thoại"> Thần thoại
+                                <input type="checkbox" name="genre[]" value="Khoa học viễn tưởng"> Khoa học viễn tưởng
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Độ quan trọng</label>
+                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                <label>Nhà sản xuất</label> <br>
+                                <input type="checkbox" name="producer[]" value="VTC"> VTC
+                                <input type="checkbox" name="producer[]" value="Marvel"> Marvel
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Độ quan trọng</label>
+                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                <label>Điểm rating</label>
+                                <input type="text" class="form-control" name="rating">
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Độ quan trọng</label>
+                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                <label>Ghế muốn ngồi</label>
+                                <input type="text" class="form-control" name="seatno">
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Độ quan trọng</label>
+                                <input type="number" class="form-control" min="1" max="10" name="minprice">
+                            </div>
+                        </div>
+
+
+
+                        <input class="btn btn-success" type="submit" value="submit">
+
+
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Mã suất chiếu</th>
+                            <th scope="col">Phim</th>
+                            <th scope="col">Thời gian</th>
+                            <th scope="col">Thể loại</th>
+                            <th scope="col">Nhà sản xuất</th>
+                            <th scope="col">Ghế</th>
+                            <th scope="col">Giá vé</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>1</td>
+                            <td>Infinity War</td>
+                            <td>2018-05-05 14:00:00</td>
+                            <td>Hành động</td>
+                            <td>MAVEL</td>
+                            <td>F4</td>
+                            <td>50000</td>
+                            <td><a href="#">Đặt vé</a></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+    </main>
+
+<?php include_footer(); ?>

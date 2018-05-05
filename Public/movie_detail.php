@@ -6,11 +6,7 @@
  * Time: 9:17 PM
  */
 require_once ('../Private/initialize.php');
-if ($session->role == "customer") {
-    include_once (SHARED_PATH . "/customer_header.php");
-} else {
-    include_once(SHARED_PATH . '/public_header.php');
-}
+include_header();
 
 
 if(isset($_GET['movie_id'])){

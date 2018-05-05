@@ -72,7 +72,21 @@ function require_member_login(){
 }
 
 function include_header(){
+    global $session;
+    if ($session->role == "member") {
+        include_once (SHARED_PATH . "/customer_header.php");
+    } else if ($session->role == "admin") {
+        include_once(SHARED_PATH . '/admin_header.php');
+    } else include_once (SHARED_PATH . '/public_header.php');
+}
 
+function include_footer(){
+    global $session;
+    if ($session->role == "member") {
+        include_once (SHARED_PATH . "/customer_footer.php");
+    } else if ($session->role == "admin") {
+        include_once(SHARED_PATH . '/admin_footer.php');
+    } else include_once (SHARED_PATH . '/public_footer.php');
 }
 
 ?>
