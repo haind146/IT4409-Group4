@@ -48,7 +48,7 @@ header("Content-type: text/html; charset=utf-8");
                 $tg2 = $arrkq1[$j] / $tg1;
                 array_push($arrkq, round($tg2, 7));
             }
-
+//            print_r($arrkq);
             return $arrkq;
         }
     }

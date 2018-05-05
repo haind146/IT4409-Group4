@@ -5,9 +5,9 @@
  * Date: 4/30/2018
  * Time: 9:37 PM
  */
-include_once '../dss/DSS_Main.php';
-include_once '../dss/User_Required.php';
-require_once '../initialize.php';
+include_once '../../Private/dss/DSS_Main.php';
+include_once '../../Private/dss/User_Required.php';
+require_once '../../Private/initialize.php';
 if(!empty($_POST)){
     error_reporting(0);
 //    print_r($_POST);
@@ -21,7 +21,7 @@ if(!empty($_POST)){
     $end_time = date('H:i:s', strtotime($ed_time));
     $UserRequired = new User_Required();
     $genre = implode($_POST['genre'],",");
-    $UserRequired->setRequired($_POST['minprice'],$_POST['maxprice'],$start_date,$end_date,$start_time,$end_time,$genre,$_POST['rating'],$_POST['seatno'],$_POST['producer']);
+    $UserRequired->setRequired($_POST['minprice'],$_POST['maxprice'],$start_date,$end_date,$start_time,$end_time,$genre,$_POST['rating'],$_POST['seatno'],$_POST['producer'],$_POST['name']);
     $ArrayRequired = $UserRequired->getUserRequired();
 
     $main = new DSS_Main();
@@ -39,12 +39,15 @@ if(!empty($_POST)){
                 $movie = Movie::find_by_id($schedule->movie_id);
                 $json = array();
                 $json['id']=$id;
+                $json['schedule_id']=$schedule->schedule_id;
+                $json['duration']=$movie->$duration;
                 $json['start_time']=$schedule->start_time;
                 $json['price']=$ticket->price;
                 $json['genre']=$movie->genre;
-                $json['producer']=$moive->producer;
+                $json['producer']=$movie->producer;
                 $json['rating']=$movie->rating;
                 $json['seat_no']=$ticket->seat_no;
+                $json['movie_name']=$movie->name;
                 array_push($result,$json);
                 $i++;
 
@@ -59,12 +62,15 @@ if(!empty($_POST)){
                 $movie = Movie::find_by_id($schedule->movie_id);
                 $json = array();
                 $json['id']=$id;
+                $json['schedule_id']=$schedule->schedule_id;
                 $json['start_time']=$schedule->start_time;
                 $json['price']=$ticket->price;
+                $json['duration']=$movie->$duration;
                 $json['genre']=$movie->genre;
-                $json['producer']=$moive->producer;
+                $json['producer']=$movie->producer;
                 $json['rating']=$movie->rating;
                 $json['seat_no']=$ticket->seat_no;
+                $json['movie_name']=$movie->name;
                 array_push($result,$json);
 
             }
