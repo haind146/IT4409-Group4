@@ -19,7 +19,7 @@ $(document).ready(function () {
                 }
                 else{
                     for( var json in jsondata){
-                        $("#dropdownmenu").append('<a href="movie_detail.php?movie_id='+jsondata[json]['movie_id']+'" class="dropdown-item">'+jsondata[json]['name']+'<img width="50px" height="50px" src="img/'+jsondata[json]['banner_url']+'"/></a>');
+                        $("#dropdownmenu").append('<a href="movie_detail.php?movie_id='+jsondata[json]['movie_id']+'" class="dropdown-item"><img width="50px" height="50px" style="object-fit: cover" src="static/img/'+jsondata[json]['banner_url']+'"/>'+ jsondata[json]['name'] +'</a>');
                     }
                     $("#dropdownmenu").show();
                 }

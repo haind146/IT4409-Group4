@@ -7,14 +7,14 @@ $(document).ready(function() {
               url: 'controller/getData/jsonMovie.php',
               dataType: 'json',
               success: function(data) {
-                  alert("âd")
+
                 var result = '<ul>'
                   for (var i in data){
                       result = result 
                       +'<div class="movie" style="margin-top:0" ><img style="margin-left:20px;margin-top:21px;float:left" class="img-rounded" width="70" height="50" alt="Cinque Terre" src="static/img/'
                       +data[i]['poster_url']
                       +'"> <div id="'
-                      +data[i]['id']
+                      +data[i]['movie_id']
                       +'" class="title-movie" style="text-align: left;padding-top:25px;padding-left:100px">'
                       + data[i]['name']+'</div></div>';
                   }
@@ -58,7 +58,7 @@ $(document).ready(function() {
               
                 result=result 
                 +'<div class="schedule"><li style="padding-left:35%;padding-top:10px">'
-                +dayofWeek+'</li><div style="margin-top:10px;width:40px;height:30px;padding-left:45%"><a style="padding:5px;border: 1px ridge;" href="">'
+                +dayofWeek+'</li><div style="margin-top:10px;width:40px;height:30px;padding-left:45%"><a style="padding:5px;border: 1px ridge;" href="customer/ticket_booking.php?schedule_id='+response[i]["schedule_id"]+'">'
                 +time
                 +'</a></div></div>';
                 }

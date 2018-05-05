@@ -79,7 +79,7 @@
     </nav>
     <div class="container">
         <nav class="nav justify-content-lg-center">
-            <a class="nav-link active" href="#">Đặt vé</a>
+            <a class="nav-link active" href="<?php echo url_for("chooseMovie.php")?>">Đặt vé</a>
             <a class="nav-link" href="#">Phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
             <a class="nav-link" href="#">Gợi ý suất chiếu</a>
