@@ -25,11 +25,12 @@
 //// //echo result as json
 //echo json_encode($data);
 
- require_once("../../Private/initialize.php");
+ require_once("../../../Private/initialize.php");
 
  $nowShowingMovies = Movie::getNowshowingMovie();
 
  echo json_encode($nowShowingMovies);
+//  echo json_encode("asasd");
 
 
 ?>

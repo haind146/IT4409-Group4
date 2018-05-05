@@ -3,7 +3,7 @@ $(document).ready(function() {
     // $("#ajaxButton").click(function() {
         $.ajax({
               type: 'POST',
-              url: 'getData/jsonMovie.php',
+              url: '../getData/jsonMovie.php',
               dataType: 'json',
               success: function(data) {
                 var result = '<ul>'
