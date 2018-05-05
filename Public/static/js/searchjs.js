@@ -9,7 +9,7 @@ $(document).ready(function () {
             var postdata = {
                 text: text
             }
-            $.post("../Private/controller/SearchController.php", postdata, function (data, status){
+            $.post("../Public/controller/SearchController.php", postdata, function (data, status){
                 $("#dropdownmenu").empty();
                 var jsondata = JSON.parse(data);
                 console.log(data);

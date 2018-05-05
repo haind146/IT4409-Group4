@@ -14,6 +14,7 @@
 $page_title = 'HOME';
 include_once (SHARED_PATH . "/customer_header.php");
 $nowShowingMovie = Movie::getNowshowingMovie();
+$commingSoon = Movie::getCoomingSoonMovie();
 
 
 ?>

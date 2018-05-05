@@ -12,7 +12,7 @@
 
 $page_title = 'HOME';
 include_once('../../private/share/admin_header.php');
-//    require_admin_login();
+
 
 if(is_post_request()){
     $movie_arr = [];
@@ -24,11 +24,11 @@ if(is_post_request()){
     else{
         $temp = explode(".", $_FILES["movie"]["name"]["poster_url"]);
         $poster_url = 'poster' . round(microtime(true)) . '.' . end($temp);
-        move_uploaded_file($_FILES["movie"]["tmp_name"]['poster_url'], "../img/" . $poster_url);
+        move_uploaded_file($_FILES["movie"]["tmp_name"]['poster_url'], "../static/img/" . $poster_url);
 
         $temp = explode(".", $_FILES["movie"]["name"]["banner_url"]);
         $banner_url = 'banner' . round(microtime(true)) . '.' . end($temp);
-        move_uploaded_file($_FILES["movie"]["tmp_name"]['banner_url'], "../img/" . $banner_url);
+        move_uploaded_file($_FILES["movie"]["tmp_name"]['banner_url'], "../static/img/" . $banner_url);
 
         $movie_arr['poster_url'] = $poster_url;
         $movie_arr['banner_url'] = $banner_url;
@@ -41,7 +41,7 @@ if(is_post_request()){
 }
 ?>
 
-<body>
+<main>
 
 <form action="" method="post" enctype="multipart/form-data">
 
@@ -127,4 +127,5 @@ if(is_post_request()){
     </div>
 
 </form>
+</main>
 <?php include_once (SHARED_PATH . '/admin_footer.php');

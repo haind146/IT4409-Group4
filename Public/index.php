@@ -34,7 +34,7 @@ $nowShowingMovie = Movie::getNowshowingMovie();
             </div>
             <?php foreach ($nowShowingMovie as $movie ) { ?>
                 <div class="carousel-item">
-                    <img class="d-block w-100 " src="../static/img/<?php echo $movie->banner_url ?>" alt="First slide">
+                    <img class="d-block w-100 " src="static/img/<?php echo $movie->banner_url ?>" alt="First slide">
                 </div>
             <?php } ?>
         </div>

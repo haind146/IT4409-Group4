@@ -57,8 +57,22 @@ function require_admin_login(){
         // let page proceed
 
     } else {
-        redirect_to(url_for('/index.php'));
+        redirect_to(url_for('/login.php'));
     }
+}
+
+function require_member_login(){
+    global $session;
+    if($session->is_logged_in()&&$session->role === 'member') {
+        // let page proceed
+
+    } else {
+        redirect_to(url_for('/login.php'));
+    }
+}
+
+function include_header(){
+
 }
 
 ?>

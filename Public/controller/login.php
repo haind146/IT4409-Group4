@@ -16,6 +16,9 @@ if(is_post_request()) {
     if ($user != false && $user->verify_password($password)){
         global $session;
         $session->login($user);
+        if($session->role == "member"){
+            redirect_to(url_for('/customer/home.php'));
+        } else
         redirect_to(url_for('/admin/home.php'));
 
     }

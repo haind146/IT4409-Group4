@@ -53,6 +53,7 @@ h6{
 main{
 	background-color: #efebdb;
 	padding-top: 1em;
+	padding-bottom: 1em;
 	min-height: 50em;
 }
 
@@ -145,4 +146,10 @@ ul, ol {
 }
 .standard {
 	background-color: #ffffff;
+}
+
+footer {
+	padding: 3em 3em 3em 3em;
+	background-color: #1d2124;
+	color: #ffffff;
 }

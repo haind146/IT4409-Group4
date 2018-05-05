@@ -7,7 +7,7 @@
  */
 
 
-
+$page_title = "Chọn suất chiếu"
 
 ?>
 
@@ -19,9 +19,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo url_for('/css/bootstrap.min.css') ?>" />
+    <link rel="stylesheet" href="<?php echo url_for('/static/css/bootstrap.min.css') ?>" />
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?php echo url_for('/css/style.css') ?>" type="text/css" />
+    <link rel="stylesheet" href="<?php echo url_for('/static/css/style.css') ?>" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title><?php echo $page_title ?> </title>
 </head>
@@ -29,7 +29,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a href="<?php echo url_for("/customer/home.php")?>"> <img class="logo" src="../../Public/static/img/logo.png"> </a>
+            <a href="<?php echo url_for("/customer/home.php")?>"> <img class="logo" src="<?php echo url_for("static/img/logo.png") ?>"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,9 +61,9 @@
     <div class="container">
         <nav class="nav justify-content-lg-center">
             <a class="nav-link active" href="../chooseMovie.php">Đặt vé</a>
-            <a class="nav-link" href="#">Phim đang chiếu</a>
-            <a class="nav-link" href="#">Phim sắp chiếu</a>
+            <a class="nav-link" href="#">Phim </a>
             <a class="nav-link" href="#">Khuyến mãi</a>
+            <a class="nav-link" href="#">Gợi ý suất chiếu</a>
         </nav>
     </div>
 </header>

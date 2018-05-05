@@ -9,7 +9,7 @@ $page_title = 'Quản lý phim';
 require_once('../../Private/initialize.php');
 include_once(SHARED_PATH . '/admin_header.php');
 
-$nowShowingMovies = Movie::getNowshowingMovie();
+$nowShowingMovies = Movie::getCoomingSoonMovie();
 
 ?>
 
