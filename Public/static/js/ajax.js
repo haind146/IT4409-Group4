@@ -1,15 +1,17 @@
 $(document).ready(function() {
    
     // $("#ajaxButton").click(function() {
-        $.ajax({
+// alert("ad")
+    $.ajax({
               type: 'POST',
-              url: 'getData/jsonMovie.php',
+              url: 'controller/getData/jsonMovie.php',
               dataType: 'json',
               success: function(data) {
+                  alert("âd")
                 var result = '<ul>'
                   for (var i in data){
                       result = result 
-                      +'<div class="movie" style="margin-top:0" ><img style="margin-left:20px;margin-top:21px;float:left" class="img-rounded" width="70" height="50" alt="Cinque Terre" src="img/'
+                      +'<div class="movie" style="margin-top:0" ><img style="margin-left:20px;margin-top:21px;float:left" class="img-rounded" width="70" height="50" alt="Cinque Terre" src="static/img/'
                       +data[i]['poster_url']
                       +'"> <div id="'
                       +data[i]['id']
@@ -28,14 +30,14 @@ $(document).ready(function() {
          var myClass = this.className;
         $('.movie').css('background', 'white');
         $('.movie').css('color', 'black');
-        $(this).css('background', 'orange');
-        $(this).css('color', 'red');
+        $(this).css('background', '#28a745');
+        $(this).css('color', 'white');
         
         var text = $(this).children("div").attr("id");
         $.ajax({  
             type: 'GET',
-            url: 'getData/jsonSchedule.php', 
-            data: { name: text },
+            url: 'controller/getData/jsonSchedule.php', 
+            data: { movie_id: text },
             success: function(response) {
                 
                 var weekday = new Array(7);
@@ -70,8 +72,9 @@ $(document).ready(function() {
         var myClass = this.className;
        $('.schedule').css('background', 'white');
        $('.schedule').css('color', 'black');
-       $(this).css('background', 'yellow');
-       $(this).css('color', 'red');
+       $(this).css('background', '#28a745');
+       $(this).css('color', 'white');
+       $(this).children("div").children("a").css('color', 'white');
        
        var text = $(this).children("div").attr("id")
     }); 
