@@ -18,25 +18,31 @@ include_header();
             <div class="row">
                 <div class="col-md-4">
                     <form action="controller/DSSController.php" method="post">
-
-                        <div class="form-group">
-                            <label>Ngày bắt đầu</label>
-                            <input type="date" class="form-control" name="date1" value= <?php echo date('Y-m-d'); ?>>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label>Ngày bắt đầu</label>
+                                <input type="date" class="form-control" name="date1" value= <?php echo date('Y-m-d'); ?>>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Ngày kết thúc</label>
+                                <input type="date" class="form-control" name="date2">
+                            </div>
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label>Thời gian bắt đầu</label>
+                                <input type="time" name="time1" class="form-control">
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Thời gian kết thúc</label>
+                                <input type="time" name="time2" class="form-control">
+                            </div>
+                        </div>
 
-                        <div class="form-group">
-                            <label>Ngày kết thúc</label>
-                            Ngày kết thúc<input type="date" class="form-control" name="date2">
-                        </div>
-                        <div class="form-group">
-                            <label>Thời gian bắt đầu</label>
-                            <input type="time" name="time1" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Thời gian kết thúc</label>
-                            <input type="time" name="time2" class="form-control">
-                        </div>
+
+
+
                         <div class="form-row">
                             <div class="form-group col-8">
                                 <label>Giá thấp nhất</label>
