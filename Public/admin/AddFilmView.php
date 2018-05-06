@@ -9,7 +9,7 @@
  * Date: 3/20/2018
  * Time: 3:47 PM
  */
-
+require_admin_login();
 $page_title = 'HOME';
 include_once('../../private/share/admin_header.php');
 

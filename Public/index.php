@@ -12,7 +12,7 @@
  */
 
 $page_title = 'HOME';
-include_once (SHARED_PATH . "/public_header.php");
+include_header();
 $nowShowingMovie = Movie::getNowshowingMovie();
 
 

@@ -8,7 +8,7 @@
 $page_title = 'Quản lý phim';
 require_once('../../Private/initialize.php');
 include_once(SHARED_PATH . '/admin_header.php');
-
+require_admin_login();
 $nowShowingMovies = Movie::getCoomingSoonMovie();
 
 ?>

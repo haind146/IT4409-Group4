@@ -6,6 +6,7 @@
  * Time: 8:04 PM
  */
 require_once ('../../Private/initialize.php');
+require_admin_login();
 if(isset($_GET['date'])){
     header("Content-Type: application/json; charset=UTF-8");
     $date = $_GET['date'];

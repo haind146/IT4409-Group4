@@ -25,7 +25,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a href="home.php"> <img class="logo" src="../../Public/static/img/logo.png"> </a>
+            <a href="<?php echo url_for("admin/home.php") ?>"> <img class="logo" src="<?php echo url_for("static/img/logo.png") ?>"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -33,11 +33,12 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 
-                <form class="form-inline my-2 my-lg-0 ">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm phim/Diễn viên"
-                           aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
-                </form>
+                <div class="dropdown">
+                    <input id="searchtext" class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm phim/Diễn viên" aria-label="Search">
+                    <div id="dropdownmenu" class="dropdown-menu">
+
+                    </div>
+                </div>
 
             </div>
 
@@ -56,8 +57,8 @@
     </nav>
     <div class="container">
         <nav class="nav justify-content-lg-center">
-            <a class="nav-link active" href="schedule.php">Lịch chiếu</a>
-            <a class="nav-link" href="movies_management.php">Quản lý phim</a>
+            <a class="nav-link active" href="<?php echo url_for('/admin/schedule.php'); ?>">Lịch chiếu</a>
+            <a class="nav-link" href="<?php echo url_for('/admin/movies_management.php'); ?>">Quản lý phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
             <a class="nav-link" href="#">Quản lý thành viên</a>
         </nav>

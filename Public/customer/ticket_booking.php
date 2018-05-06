@@ -6,7 +6,7 @@
  * Time: 9:06 PM
  */
 require_once("../../Private/initialize.php");
-
+require_member_login();
 if (is_get_request()) {
     if (isset($_GET['schedule_id'])) {
         $schedule = Schedule::find_by_id($_GET['schedule_id']);
@@ -32,7 +32,7 @@ if(is_post_request()) {
             }
 
         }
-        die("ok");
+        redirect_to(url_for("customer/success.php"));
 
     }
 }

@@ -1,6 +1,6 @@
 
 <?php require_once ('../../Private/initialize.php');
-
+require_member_login();
 ?>
 
 <?php

@@ -23,6 +23,8 @@ $page_title = "Chọn suất chiếu"
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo url_for('/static/css/style.css') ?>" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="<?php echo url_for('/static/js/jquery.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo url_for('/static/js/searchjs.js') ?>"></script>
     <title><?php echo $page_title ?> </title>
 </head>
 <body>
@@ -37,11 +39,12 @@ $page_title = "Chọn suất chiếu"
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 
-                <form class="form-inline my-2 my-lg-0 ">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm phim/Diễn viên"
-                           aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
-                </form>
+                <div class="dropdown">
+                    <input id="searchtext" class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm phim/Diễn viên" aria-label="Search">
+                    <div id="dropdownmenu" class="dropdown-menu">
+
+                    </div>
+                </div>
 
             </div>
 
@@ -53,17 +56,17 @@ $page_title = "Chọn suất chiếu"
                     <a class="dropdown-item" href="#">Thông tin cá nhân</a>
                     <a class="dropdown-item" href="#">Lịch sử xem</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo url_for('/logout.php'); ?>">Đăng xuất</a>
+                    <a class="dropdown-item" href="<?php echo url_for('/controller/logout.php'); ?>">Đăng xuất</a>
                 </div>
             </div>
         </div>
     </nav>
     <div class="container">
         <nav class="nav justify-content-lg-center">
-            <a class="nav-link active" href="../chooseMovie.php">Đặt vé</a>
+            <a class="nav-link active" href="<?php echo url_for('chooseMovie.php')?>">Đặt vé</a>
             <a class="nav-link" href="#">Phim </a>
             <a class="nav-link" href="#">Khuyến mãi</a>
-            <a class="nav-link" href="#">Gợi ý suất chiếu</a>
+            <a class="nav-link" href="<?php echo url_for("DSSView.php")?>">Gợi ý suất chiếu</a>
         </nav>
     </div>
 </header>

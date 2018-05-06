@@ -6,7 +6,7 @@
  * Time: 9:17 PM
  */
 require_once ('../../Private/initialize.php');
-
+require_admin_login();
     if(isset($_GET['movie_id'])){
         $id = $_GET['movie_id'];
         $movie = Movie::find_by_id($id);

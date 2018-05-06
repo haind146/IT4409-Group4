@@ -24,6 +24,10 @@ $(document).ready(function () {
         console.log(postdata)
         $.post("../Public/controller/DSSController.php",postdata,function (data,status) {
             console.log(data);
+            if(data==="Không có phim thỏa mãn") {
+                alert("Không có phim nào thỏa mãn");
+                return;
+            }
             var jsonarray= JSON.parse(data);
             $("#tbody").empty();
             for(i in jsonarray) {
@@ -36,7 +40,7 @@ $(document).ready(function () {
                     '<td>'+jsonarray[i]['producer']+'</td>' +
                     '<td>'+jsonarray[i]['seat_no']+'</td>' +
                     '<td>'+jsonarray[i]['price']+'</td>' +
-                    '<td><a href="customer/ticket_booking.php?schedule_id='+jsonarray[i]['price']+'">Đặt vé</a></td>' +
+                    '<td><a href="customer/ticket_booking.php?schedule_id='+jsonarray[i]['schedule_id']+'">Đặt vé</a></td>' +
                     '</tr>');
             }
         });

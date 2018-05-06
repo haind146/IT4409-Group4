@@ -6,7 +6,7 @@ class DB_Driver {
     //connect function
     public function connect() {
         if(!$this->__connect) {
-            $this->__connect = mysqli_connect('localhost','root','123456','cinemaproject')
+            $this->__connect = mysqli_connect('localhost','root','','cinemaproject')
                         or die ('Connection failed: '.$__connect->connect_error);
             //Process font error
             mysqli_query($this->__connect,"SET character_set_results = 'utf8' , character_set_client = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");

@@ -55,7 +55,7 @@ if(isset($_GET['movie_id'])){
                     <h5>CÁC PHIM ĐANG CHIẾU</h5>
                     <?php foreach ($nowShowingMovies as $nowMovie) { ?>
                         <div class="side-banner">
-                            <a class="side-banner" href="<?php echo url_for("movie_detail.php?movie_id=". $nowMovie->movie_id)?>"><img src="img/<?php echo $nowMovie->banner_url ?>"></a>
+                            <a class="side-banner" href="<?php echo url_for("movie_detail.php?movie_id=". $nowMovie->movie_id)?>"><img src="<?php echo url_for("static/img/") . $nowMovie->banner_url ?>"></a>
 
                             <h6><?php echo $nowMovie->name ?></h6>
                         </div>
