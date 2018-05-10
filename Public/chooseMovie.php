@@ -36,7 +36,7 @@
   </footer>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="static/js/jquery-3.3.1.slim.min.js"></script>
+
   <script src="static/js/bootstrap.bundle.js"></script>
   <script language="javascript" type="text/javascript" src="static/js/jquery-1.6.2.min.js"></script>
   <script language="javascript" type="text/javascript" src="static/js/ajax.js"></script>

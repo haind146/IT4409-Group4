@@ -14,6 +14,7 @@
 $page_title = 'HOME';
 include_header();
 $nowShowingMovie = Movie::getNowshowingMovie();
+$commingSoon = Movie::getCoomingSoonMovie();
 
 
 ?>
@@ -71,58 +72,24 @@ $nowShowingMovie = Movie::getNowshowingMovie();
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div class="row ">
-                    <div class="col">
-                        <a href="#" class="list-movie"><img src="img/movie1.jpg"></a>
-                        <h6 >Tên phim</h6>
+                <div class="container">
+                    <div class="row ">
+                        <?php $i=0; foreach ($commingSoon as $movie ) { ?>
+                            <div class="col-md-4">
+                                <a href="<?php echo url_for("movie_detail.php?movie_id=") . $movie->movie_id ?>" class="list-movie"><img src="static/img/<?php echo $movie->banner_url ?>"></a>
+                                <h6 style="text-transform: uppercase" ><?php echo $movie->name ?></h6>
+                            </div>
+
+                            <?php if(++$i > 5) break;} ?>
                     </div>
-                    <div class="col list-movie">
-                        <img src="img/movie2.jpg">
-                    </div>
-                    <div class="col list-movie">
-                        <img src="img/movie3.jpg">
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <a href="#" class="list-movie"><img src="img/movie1.jpg"></a>
-                        <h6 >Tên phim</h6>
-                    </div>
-                    <div class="col list-movie">
-                        <img src="img/movie2.jpg">
-                    </div>
-                    <div class="col list-movie">
-                        <img src="img/movie3.jpg">
-                    </div>
+
                 </div>
             </div>
 
         </div>
     </div>
 
-    <div class="container" style="margin-top: 3rem">
-        <div class="row">
-            <div class="col">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#by-day" role="tab" aria-controls="home" aria-selected="true">MUA VÉ THEO NGÀY</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#by-movie" role="tab" aria-controls="profile" aria-selected="false">MUA VÉ THEO PHIM</a>
-                    </li>
 
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="ticket-by-day" role="tabpanel" aria-labelledby="home-tab">...</div>
-                    <div class="tab-pane fade" id="by-movie" role="tabpanel" aria-labelledby="profile-tab">...</div>
-
-                </div>
-            </div>
-            <div class="col">
-
-            </div>
-        </div>
-    </div>
 </main>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>

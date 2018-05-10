@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    $("#searchbutton").click(function () {
 
-    });
     $("#searchtext").on('input',function () {
         console.log("change");
         var text = $("#searchtext").val().trim();
@@ -9,7 +7,7 @@ $(document).ready(function () {
             var postdata = {
                 text: text
             }
-            $.post("../Public/controller/SearchController.php", postdata, function (data, status){
+            $.post("http://localhost/IT4409-Group4/Public/controller/SearchController.php", postdata, function (data, status){
                 $("#dropdownmenu").empty();
                 var jsondata = JSON.parse(data);
                 console.log(data);
@@ -19,7 +17,7 @@ $(document).ready(function () {
                 }
                 else{
                     for( var json in jsondata){
-                        $("#dropdownmenu").append('<a href="movie_detail.php?movie_id='+jsondata[json]['movie_id']+'" class="dropdown-item">'+'<img width="50px" height="50px" style="object-fit: cover" src="static/img/'+jsondata[json]['banner_url']+'"/>'+jsondata[json]['name']+'</a>');
+                        $("#dropdownmenu").append('<a href="movie_detail.php?movie_id='+jsondata[json]['movie_id']+'" class="dropdown-item">'+'<img width="50px" height="50px" style="object-fit: cover" src="http://localhost/IT4409-Group4/Public/static/img/'+jsondata[json]['banner_url']+'"/>'+jsondata[json]['name']+'</a>');
                     }
                     $("#dropdownmenu").show();
                 }

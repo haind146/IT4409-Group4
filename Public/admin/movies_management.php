@@ -9,7 +9,7 @@ $page_title = 'Quản lý phim';
 require_once('../../Private/initialize.php');
 include_once(SHARED_PATH . '/admin_header.php');
 require_admin_login();
-$nowShowingMovies = Movie::getCoomingSoonMovie();
+
 
 $current_page = $_GET['page'] ?? 1;
 $per_page = 5;
@@ -27,14 +27,14 @@ $movies = Movie::find_by_sql($sql);
 
 ?>
 
-<main>
+<main id="main">
     <div class="container">
         <h3 class="text-center" style="margin-top: 1rem; text-transform: uppercase">Quản lý phim</h3>
         <div class="row" style="margin-top: 2em; margin-bottom: 2em">
-            <select class="form-control col-3 offset-2">
-                <option>Tất cả phim</option>
-                <option>Phim đang chiếu</option>
-                <option>Phim sắp chiếu</option>
+            <select onchange="loadMovies(this.value)" class="form-control col-3 offset-2">
+                <option value="all">Tất cả phim</option>
+                <option value="now">Phim đang chiếu</option>
+                <option value="comming">Phim sắp chiếu</option>
 
             </select>
             <a class="btn btn-success offset-3" href="<?php echo url_for("admin/AddFilmView.php")?>">Thêm phim mới</a>
