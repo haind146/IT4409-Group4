@@ -38,8 +38,8 @@ include_once (SHARED_PATH . '/admin_header.php');
                             <br><b>Thời lượng:</b> <?php echo $movie->duration . ' phút' ?>
                             <br><b>Đánh giá:</b> <?php echo $movie->rating ?>
                             <br> <br>
-                            <a class="btn btn-secondary" href="edit_movie.php?movie_id=<?php echo $movie->movie_id ?>" >Chỉnh sửa</a>
-                            <a class="btn btn-danger" href="">Xóa</a>
+                            <a class="btn btn-danger" href="edit_movie.php?movie_id=<?php echo $movie->movie_id ?>" >Chỉnh sửa</a>
+
 
 
                         </div>

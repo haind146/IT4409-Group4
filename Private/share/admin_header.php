@@ -19,6 +19,8 @@
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo url_for('static/css/style.css') ?>" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="<?php echo url_for('/static/js/jquery.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo url_for('/static/js/search.js') ?>"></script>
     <title><?php echo $page_title ?> </title>
 </head>
 <body>
@@ -47,9 +49,6 @@
                     <?php echo $session->username; ?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Thông tin cá nhân</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo url_for('/controller/logout.php'); ?>">Đăng xuất</a>
                 </div>
             </div>
@@ -60,7 +59,7 @@
             <a class="nav-link active" href="<?php echo url_for('/admin/schedule.php'); ?>">Lịch chiếu</a>
             <a class="nav-link" href="<?php echo url_for('/admin/movies_management.php'); ?>">Quản lý phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
-            <a class="nav-link" href="#">Quản lý thành viên</a>
+
         </nav>
     </div>
 </header>

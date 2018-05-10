@@ -40,7 +40,7 @@ $nowShowingMovie = Movie::getNowshowingMovie();
 
 <main>
     <div class="container">
-        <h2 class="text-center" style="text-transform: uppercase;">Lập lịch chiếu phim</h2>
+        <h3 class="text-center" style="text-transform: uppercase; margin-bottom: 1em">Lập lịch chiếu phim</h3>
         <div class="form-group form-inline justify-content-center">
             <form method="post" action="schedule.php" class="form-inline" >
 
@@ -88,7 +88,7 @@ $nowShowingMovie = Movie::getNowshowingMovie();
 
             <?php foreach ($nowShowingMovie as $movie) { ?>
             <div class="banner-popover" onclick="chooseMovie(this)" style="margin-bottom: 1em" id="movie<?php echo $movie->movie_id?>">
-                <img src="../img/<?php echo $movie->banner_url ?>">
+                <img src="<?php echo url_for('static/img/') . $movie->banner_url ?>">
                 <h6 style="text-transform: uppercase"><?php echo $movie->name ?></h6>
                 <a><?php echo $movie->duration; ?>&nbsp phút</a>
             </div>

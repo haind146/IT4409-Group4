@@ -10,6 +10,7 @@ $sql = "SELECT DISTINCT producer FROM movie WHERE 1";
 $result = $database->query($sql);
 
 
+
 include_header();
 
 ?>
@@ -78,6 +79,7 @@ include_header();
                                 <input type="checkbox" name="genre[]" value="Hài"> Hài
                                 <input type="checkbox" name="genre[]" value="Hành động"> Hành động
                                 <input type="checkbox" name="genre[]" value="Tình cảm"> Tình cảm
+                                <input type="checkbox" name="genre[]" value="Tâm lý"> Tâm lý
                                 <input type="checkbox" name="genre[]" value="Hoạt hình"> Hoạt hình
                                 <input type="checkbox" name="genre[]" value="Thần thoại"> Thần thoại
                                 <input type="checkbox" name="genre[]" value="Khoa học viễn tưởng"> Khoa học viễn tưởng
@@ -90,8 +92,11 @@ include_header();
                         <div class="form-row">
                             <div class="form-group col-8">
                                 <label>Nhà sản xuất</label> <br>
-                                <input type="checkbox" name="producer[]" value="VTC"> VTC
-                                <input type="checkbox" name="producer[]" value="Marvel"> Marvel
+                                <?php while ($row = $result->fetch_array()){
+                                    echo '<input type="checkbox" name="producer[]" value="' . $row[0] . '">'.$row[0] . '<br>';
+                                } ?>
+
+
                             </div>
                             <div class="form-group col-4">
                                 <label>Độ quan trọng</label>
@@ -137,6 +142,7 @@ include_header();
                             <th scope="col">Phim</th>
                             <th scope="col">Thời gian</th>
                             <th scope="col">Thể loại</th>
+                            <th scope="col">Nhà sản xuất</th>
                             <th scope="col">Nhà sản xuất</th>
                             <th scope="col">Ghế</th>
                             <th scope="col">Giá vé</th>

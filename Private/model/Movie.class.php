@@ -40,7 +40,7 @@ class Movie extends DatabaseObject
         $this->cast = $args['cast'] ?? "";
         $this->duration = $args['duration'] ?? "";
         $this->rating = $args['rating'] ?? "";
-        $this->count_rating = 100 ?? "";
+        $this->count_rating = $args['count_rating'] ?? 100;
         $this->release_date = $args['release_date'] ?? "";
         $this->description = $args['description'] ?? "";
         $this->poster_url = $args['poster_url'] ?? "";
@@ -63,8 +63,27 @@ class Movie extends DatabaseObject
         return static::find_by_sql($sql);
     }
 
+    public function count_schedule(){
+        $sql = "SELECT COUNT(*) FROM schedule WHERE movie_id='" . $this->movie_id . "';";
+        $result = self::$database->query($sql);
+        $row = $result->fetch_array();
+        return $row[0];
+    }
+
+    public function get_revenue(){
+        $sql = 'SELECT SUM(price) FROM schedule, ticket, movie WHERE movie.movie_id ='. $this->movie_id . '  AND schedule.movie_id=movie.movie_id AND ticket.schedule_id = schedule.schedule_id AND ticket.status = 0;';
+        $result = self::$database->query($sql);
+        $row = $result->fetch_array();
+        return $row[0];
+    }
+
     public function setId(){
         $this->id = $this->movie_id;
     }
 
+    public function rate($star){
+        $this->rating = ($this->rating*$this->count_rating + $star)/($this->count_rating+1);
+        $this->setId();
+        $this->save();
+    }
 }

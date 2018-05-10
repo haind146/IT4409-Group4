@@ -20,6 +20,7 @@
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo url_for('static/css/style.css') ?>" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <script type="text/javascript" src="static/js/jquery.js"></script>
     <script type="text/javascript" src="static/js/searchjs.js"></script>
     <title>Space Cinema</title>
@@ -80,7 +81,7 @@
     <div class="container">
         <nav class="nav justify-content-lg-center">
             <a class="nav-link active" href="<?php echo url_for("chooseMovie.php")?>">Đặt vé</a>
-            <a class="nav-link" href="#">Phim</a>
+            <a class="nav-link" href="<?php echo url_for('movie.php')?>">Phim</a>
             <a class="nav-link" href="#">Khuyến mãi</a>
             <a class="nav-link" href="DSSView.php">Gợi ý suất chiếu</a>
 

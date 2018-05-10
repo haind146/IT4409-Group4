@@ -14,6 +14,7 @@ class Session {
     private $last_login;
     public $role;
 
+
     public const MAX_LOGIN_AGE = 60*60*24; // 1 day
 
     public function __construct() {
@@ -74,11 +75,11 @@ class Session {
 
     public function message($msg="") {
         if(!empty($msg)) {
-            // Then this is a "set" message
+            // "set" message
             $_SESSION['message'] = $msg;
             return true;
         } else {
-            // Then this is a "get" message
+            //"get" message
             return $_SESSION['message'] ?? '';
         }
     }

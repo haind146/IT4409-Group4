@@ -6,16 +6,24 @@
  * Time: 9:17 PM
  */
 require_once ('../Private/initialize.php');
-include_header();
 
 
 if(isset($_GET['movie_id'])){
     $id = $_GET['movie_id'];
     $movie = Movie::find_by_id($id);
     $nowShowingMovies = Movie::getNowshowingMovie();
+
 } else {
     redirect_to(url_for('index.php'));
 }
+if(is_post_request()){
+    if(!empty($_POST['star'])){
+        $star = $_POST['star'];
+        $movie->rate($star);
+        $_SESSION[$movie->movie_id] = $star;
+    }
+}
+include_header();
 
 
 ?>
@@ -37,11 +45,61 @@ if(isset($_GET['movie_id'])){
                             <br><b>Nhà sản xuất:</b> <?php echo $movie->producer ?>
                             <br><b>diễn viên:</b> <?php echo $movie->cast ?>
                             <br><b>Thời lượng:</b> <?php echo $movie->duration . ' phút' ?>
-                            <br><b>Đánh giá:</b> <?php echo $movie->rating ?>
+                            <br><b>Đánh giá:</b> <?php echo number_format($movie->rating,1) ?>
                             <br> <br>
-                            <?php if ($session->role === 'admin') { ?>
-                            <a class="btn btn-secondary" href="edit_movie.php?movie_id=<?php echo $movie->id ?>" >Chỉnh sửa</a>
-                            <a class="btn btn-danger" href="">Xóa</a>
+                            <!-- Button trigger modal -->
+                            <?php if (!isset($_SESSION[$movie->movie_id])) { ?>
+
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
+                                Đánh giá
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form action="movie_detail.php?movie_id=<?php echo $movie->movie_id?>" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Đánh giá phim</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <div class="stars">
+                                                <input class="star star-5" value="10" id="star-10" type="radio" name="star"  />
+                                                <label class="star star-5" for="star-10"></label>
+                                                <input class="star star-5" value="9" id="star-9" type="radio" name="star" />
+                                                <label class="star star-5" for="star-9"></label>
+                                                <input class="star star-5" value="8" id="star-8" type="radio" name="star" />
+                                                <label class="star star-5" for="star-8"></label>
+                                                <input class="star star-5" value="7" id="star-7" type="radio" name="star" />
+                                                <label class="star star-5" for="star-7"></label>
+                                                <input class="star star-5" value="6" id="star-6" type="radio" name="star" />
+                                                <label class="star star-5" for="star-6"></label>
+                                                <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                                                <label class="star star-5" for="star-5"></label>
+                                                <input class="star star-4" value="4" id="star-4" type="radio" name="star" />
+                                                <label class="star star-4" for="star-4"></label>
+                                                <input class="star star-3" value="3" id="star-3" type="radio" name="star" />
+                                                <label class="star star-3" for="star-3"></label>
+                                                <input class="star star-2" value="2" id="star-2" type="radio" name="star" />
+                                                <label class="star star-2" for="star-2"></label>
+                                                <input class="star star-1" value="1" id="star-1" type="radio" name="star" />
+                                                <label class="star star-1" for="star-1"></label>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                            <button type="submit" class="btn btn-warning">Gửi</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             <?php } ?>
 
                         </div>

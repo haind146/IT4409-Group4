@@ -64,7 +64,7 @@ class Pagination {
     public function page_links($url) {
         $output = "";
         if($this->total_pages() > 1) {
-            $output .= "<div class=\"pagination\">";
+            $output .= "<div class=\"pagination justify-content-center\">";
             $output .= $this->previous_link($url);
             $output .= $this->number_links($url);
             $output .= $this->next_link($url);

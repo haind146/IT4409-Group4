@@ -24,20 +24,23 @@ $(document).ready(function () {
         console.log(postdata)
         $.post("../Public/controller/DSSController.php",postdata,function (data,status) {
             console.log(data);
-            if(data==="Không có phim thỏa mãn") {
-                alert("Không có phim nào thỏa mãn");
+            try {
+                var jsonarray = JSON.parse(data);
+            }
+            catch (err){
+                alert("Không có phim thỏa mãn");
                 return;
             }
-            var jsonarray= JSON.parse(data);
             $("#tbody").empty();
             for(i in jsonarray) {
                 $("#tbody").append('<tr>' +
                     '<td>'+jsonarray[i]['id']+'</td>' +
                     '<td>'+jsonarray[i]['schedule_id']+'</td>' +
                     '<td>'+jsonarray[i]['movie_name']+'</td>' +
-                    '<td>'+jsonarray[i]['start_time']+' ('+jsonarray[i]['duration']+' phút)'+'</td>' +
+                    '<td>'+jsonarray[i]['start_time']+'</td>' +
                     '<td>'+jsonarray[i]['genre']+'</td>' +
                     '<td>'+jsonarray[i]['producer']+'</td>' +
+                    '<td>'+jsonarray[i]['rating']+'</td>' +
                     '<td>'+jsonarray[i]['seat_no']+'</td>' +
                     '<td>'+jsonarray[i]['price']+'</td>' +
                     '<td><a href="customer/ticket_booking.php?schedule_id='+jsonarray[i]['schedule_id']+'">Đặt vé</a></td>' +

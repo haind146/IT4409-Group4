@@ -29,6 +29,7 @@ if(is_post_request()) {
                 $ticket->set_customer($session->getUserId());
                 $ticket->setID();
                 $ticket->save();
+
             }
 
         }

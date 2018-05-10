@@ -22,6 +22,7 @@ $page_title = "Chọn suất chiếu"
     <link rel="stylesheet" href="<?php echo url_for('/static/css/bootstrap.min.css') ?>" />
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo url_for('/static/css/style.css') ?>" type="text/css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script type="text/javascript" src="<?php echo url_for('/static/js/jquery.js') ?>"></script>
     <script type="text/javascript" src="<?php echo url_for('/static/js/searchjs.js') ?>"></script>
@@ -53,7 +54,7 @@ $page_title = "Chọn suất chiếu"
                     <?php echo $session->username; ?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+                    <a class="dropdown-item" href="<?php echo url_for("customer/edit_info.php")?>">Thông tin cá nhân</a>
                     <a class="dropdown-item" href="#">Lịch sử xem</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo url_for('/controller/logout.php'); ?>">Đăng xuất</a>
@@ -64,7 +65,7 @@ $page_title = "Chọn suất chiếu"
     <div class="container">
         <nav class="nav justify-content-lg-center">
             <a class="nav-link active" href="<?php echo url_for('chooseMovie.php')?>">Đặt vé</a>
-            <a class="nav-link" href="#">Phim </a>
+            <a class="nav-link" href="<?php echo url_for('movie.php')?>">Phim </a>
             <a class="nav-link" href="#">Khuyến mãi</a>
             <a class="nav-link" href="<?php echo url_for("DSSView.php")?>">Gợi ý suất chiếu</a>
         </nav>

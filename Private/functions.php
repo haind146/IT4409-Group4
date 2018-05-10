@@ -63,6 +63,7 @@ function require_admin_login(){
 
 function require_member_login(){
     global $session;
+
     if($session->is_logged_in()&&$session->role === 'member') {
         // let page proceed
 
@@ -89,4 +90,13 @@ function include_footer(){
     } else include_once (SHARED_PATH . '/public_footer.php');
 }
 
+function money_format($priceFloat) {
+    $symbol = 'đ';
+    $symbol_thousand = '.';
+    $decimal_place = 0;
+    $price = number_format($priceFloat, $decimal_place, '', $symbol_thousand);
+    return $price.$symbol;
+}
 ?>
+
+

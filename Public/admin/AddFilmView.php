@@ -47,7 +47,7 @@ if(is_post_request()){
 
     <div class="container">
         <div>
-            <h1 class="text-center">Thêm phim mới</h1>
+            <h3 class="text-center" style="text-transform: uppercase; margin: 1em 1em 1em 1em">Thêm phim mới</h3>
         </div>
         <div align="left">
             <div class="form-group row">
@@ -106,7 +106,7 @@ if(is_post_request()){
             </div>
             <div class="form-group row">
                 <label class="offset-2 col-md-2 col-form-label">Mô tả: </label>
-                <input class="col-sm-7 form-control" type="text" placeholder="Mô tả" name="movie[description]">
+                <textarea class="col-sm-7 form-control" rows="4" type="text" placeholder="Mô tả" name="movie[description]"></textarea>
             </div>
             <div class="form-group row">
                 <label class="offset-2 col-md-2 col-form-label">Giá vé cơ bản: </label>

@@ -64,7 +64,7 @@ class DatabaseObject
 
          $sql = "UPDATE " . static::$tableName . " SET ";
          $sql .= join(', ', $attribute_pairs);
-         $sql .= " WHERE ".static::$tableName."_id='" . self::$database->escape_string($this->id) . "' ";
+         $sql .= " WHERE " . static::$tableName."_id=" . "'" . self::$database->escape_string($this->id) . "' ";
          $sql .= "LIMIT 1";
          $result = self::$database->query($sql);
          return $result;
@@ -114,7 +114,7 @@ class DatabaseObject
     }
 
     static public function count_all() {
-        $sql = "SELECT COUNT(*) FROM " . static::$table_name;
+        $sql = "SELECT COUNT(*) FROM " . static::$tableName;
         $result_set = self::$database->query($sql);
         $row = $result_set->fetch_array();
         return array_shift($row);

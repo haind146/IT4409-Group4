@@ -1,5 +1,5 @@
 <?php
-header("Content-type: text/html; charset=utf-8");
+
 class DB_Driver {
     private $__connect;
 
@@ -9,7 +9,7 @@ class DB_Driver {
             $this->__connect = mysqli_connect('localhost','root','','cinemaproject')
                         or die ('Connection failed: '.$__connect->connect_error);
             //Process font error
-            mysqli_query($this->__connect,"SET character_set_results = 'utf8' , character_set_client = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
+//            mysqli_query($this->__connect,"SET character_set_results = 'utf8' , character_set_client = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
         }
     }
 
@@ -33,7 +33,7 @@ class DB_Driver {
         
         $result = mysqli_query($this->__connect,$sqlcmd);
         if(!$result) {
-            die("Error syntax in query statement");
+            die("KO");
         }
 
         $return = array();
@@ -89,7 +89,7 @@ class DB_Driver {
 
         $result = mysqli_query($this->__connect,$SQLcmd);
         if(!$result) {
-            die("Error syntax in query statement");
+            die("KO");
         }
 
         $return = array();
@@ -121,7 +121,7 @@ class DB_Driver {
             $SQLcmd .= " AND (producer = $producer)";
         }
         if($namefilm){
-            $SQLcmd .= " AND (movie.name LIKE '%$namefilm%')";
+            $SQLcmd .= " AND (lower(movie.name) LIKE '%$namefilm%');";
         }
         $this->connect();
         

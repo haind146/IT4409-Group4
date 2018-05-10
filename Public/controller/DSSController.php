@@ -21,12 +21,12 @@ if(!empty($_POST)){
     $end_time = date('H:i:s', strtotime($ed_time));
     $UserRequired = new User_Required();
     $genre = implode($_POST['genre'],",");
-    $UserRequired->setRequired($_POST['minprice'],$_POST['maxprice'],$start_date,$end_date,$start_time,$end_time,$genre,$_POST['rating'],$_POST['seatno'],$_POST['producer'],$_POST['name']);
+    $UserRequired->setRequired($_POST['minprice'] ?? 0,$_POST['maxprice'] ?? 1000000 ,$start_date,$end_date,$start_time,$end_time,$genre,$_POST['rating'] ?? 1,$_POST['seatno'] ?? "G5",$_POST['producer'],$_POST['name'] ?? "");
     $ArrayRequired = $UserRequired->getUserRequired();
 
     $main = new DSS_Main();
-    $Weight_Score = array('price' => $_POST['price'],'time' => $_POST['time'], 'genre' => $_POST['gen'] ,
-        'rating' => $_POST['rate'], 'seat_no' => $_POST['seat'], 'producer'=>$_POST['pro']);
+    $Weight_Score = array('price' => $_POST['price'] ?? "5",'time' => $_POST['time'] ?? 5, 'genre' => $_POST['gen'] ?? 5 ,
+        'rating' => $_POST['rate'] ?? 5, 'seat_no' => $_POST['seat'] ?? 5, 'producer'=>$_POST['pro'] ?? 5);
     $resultset = $main->Decision_Making($ArrayRequired,$Weight_Score);
     if(count($resultset)>0){
         if(count($resultset)>10){
@@ -65,7 +65,7 @@ if(!empty($_POST)){
                 $json['schedule_id']=$schedule->schedule_id;
                 $json['start_time']=$schedule->start_time;
                 $json['price']=$ticket->price;
-                $json['duration']=$movie->$duration;
+                $json['duration']=$movie->duration;
                 $json['genre']=$movie->genre;
                 $json['producer']=$movie->producer;
                 $json['rating']=$movie->rating;
@@ -77,6 +77,6 @@ if(!empty($_POST)){
             echo json_encode($result);
         }
     }
-    else echo "Không có phim thỏa mãn";
+    else echo "NO";
 }
 ?>
